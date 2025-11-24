@@ -35,7 +35,7 @@ const Home: React.FC = () => {
                {/* Glow Effect */}
                <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
 
-               <div className="p-8 pb-4 relative z-10">
+               <div className="p-8 pb-0 relative z-10">
                   <div className="flex items-center gap-2 mb-4">
                      <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
                      <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">MINICURSO GRATUITO</span>
@@ -46,10 +46,27 @@ const Home: React.FC = () => {
                </div>
 
                <div className="px-8 pb-8 relative z-10 flex-1 flex flex-col">
-                  <p className="text-brand-textMuted mb-8 text-sm leading-relaxed flex-grow">
+                  <p className="text-brand-textMuted mb-6 text-sm leading-relaxed">
                      {minicourse.description}
                   </p>
                   
+                  {/* Image Placeholder */}
+                  <div className="w-full aspect-video bg-neutral-900 rounded-lg overflow-hidden mb-6 border border-neutral-800 relative group-hover:border-neutral-700 transition-colors">
+                       <img 
+                           src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?q=80&w=800&auto=format&fit=crop" 
+                           alt="Minicurso" 
+                           className="w-full h-full object-cover opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-500"
+                       />
+                  </div>
+
+                  <div className="border-t border-neutral-900 pt-6 mb-8 relative z-10 mt-auto">
+                    <div className="flex items-center gap-6 text-sm text-neutral-500">
+                      <span>0{minicourse.moduleCount} Módulo</span>
+                      <span className="w-1 h-1 bg-neutral-700 rounded-full"></span>
+                      <span>{minicourse.lessonCount} Aulas</span>
+                    </div>
+                  </div>
+
                   <button 
                     onClick={() => handleLessonNavigate(1)}
                     className="w-full bg-brand-red hover:bg-brand-darkRed text-white font-bold py-4 rounded flex items-center justify-center gap-2 transition-all uppercase tracking-wider shadow-lg hover:-translate-y-1"
@@ -67,10 +84,7 @@ const Home: React.FC = () => {
               {/* Subtle pattern overlay */}
               <div className="absolute top-0 right-0 p-32 bg-brand-red/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
 
-              <div className="flex justify-between items-start mb-6 relative z-10">
-                <div className="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-full">
-                  <span className="text-xs font-bold text-white uppercase tracking-wider">{formation.price}</span>
-                </div>
+              <div className="flex justify-end items-start mb-6 relative z-10">
                 <div className="flex items-center gap-2 text-neutral-500">
                    <Lock size={16} />
                    <span className="text-xs font-bold uppercase">{formation.status}</span>
@@ -80,11 +94,20 @@ const Home: React.FC = () => {
               <h2 className="text-3xl font-heading font-bold mb-4 text-white relative z-10">
                 {formation.title}
               </h2>
-              <p className="text-brand-textMuted mb-8 flex-grow text-sm leading-relaxed relative z-10">
+              <p className="text-brand-textMuted mb-6 text-sm leading-relaxed relative z-10">
                 {formation.description}
               </p>
 
-              <div className="border-t border-neutral-900 pt-6 mb-8 relative z-10">
+              {/* Image Placeholder */}
+               <div className="relative z-10 w-full aspect-video bg-neutral-900 rounded-lg overflow-hidden mb-6 border border-neutral-800 group-hover:border-neutral-700 transition-colors">
+                     <img 
+                        src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" 
+                        alt="Formação" 
+                        className="w-full h-full object-cover opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-80 transition-all duration-500"
+                     />
+               </div>
+
+              <div className="border-t border-neutral-900 pt-6 mb-8 relative z-10 mt-auto">
                 <div className="flex items-center gap-6 text-sm text-neutral-500">
                   <span>{formation.moduleCount} Módulos</span>
                   <span className="w-1 h-1 bg-neutral-700 rounded-full"></span>
