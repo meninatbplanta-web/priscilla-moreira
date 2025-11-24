@@ -204,6 +204,18 @@ const LessonPlayer: React.FC = () => {
                   <div className="border-t border-gray-200 dark:border-neutral-900 pt-12 animate-fade-in-up transition-colors">
                       {renderVideoSection()}
                       
+                      {/* Lesson Banner and Title */}
+                      <div className="mb-8">
+                         <img
+                           src="https://placehold.co/1000x300/png"
+                           alt="Banner da Aula"
+                           className="w-full h-auto rounded-lg mb-6 object-cover shadow-sm border border-gray-200 dark:border-neutral-800"
+                         />
+                         <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 dark:text-white mb-2 leading-tight">
+                            {currentLesson.title}
+                         </h2>
+                      </div>
+
                       {isContentUnlocked && (
                           <div>
                             {/* Simplified Tabs for Minicurso */}
@@ -371,6 +383,13 @@ const LessonPlayer: React.FC = () => {
 
             {/* Lesson Info Header (Below Video) */}
             <div className="mb-8">
+                {/* Generic Banner Image */}
+                <img
+                   src="https://placehold.co/1000x300/png"
+                   alt="Banner da Aula"
+                   className="w-full h-auto rounded-lg mb-6 object-cover shadow-sm border border-gray-200 dark:border-neutral-800"
+                />
+
                 {currentLesson.courseId === 'formation' && (
                      <span className="text-xs font-bold text-brand-red uppercase tracking-wider mb-2 block">
                         Módulo {currentLesson.moduleId} • Aula {currentLesson.id - 100} 
