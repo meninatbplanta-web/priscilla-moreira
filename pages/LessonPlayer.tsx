@@ -161,6 +161,13 @@ const LessonPlayer: React.FC = () => {
             <div className="flex-1 overflow-y-auto custom-scrollbar">
                <main className="container mx-auto px-4 py-12 max-w-4xl">
                   
+                  {/* Banner Image */}
+                  <img
+                    src="https://placehold.co/1000x300/png"
+                    alt="Banner do Curso"
+                    className="w-full h-auto rounded-lg mb-8 object-cover shadow-sm border border-gray-200 dark:border-neutral-800"
+                  />
+
                   {/* Header Info */}
                   <div className="mb-10 text-center md:text-left">
                      <div className="inline-flex items-center gap-2 mb-4 bg-gray-200 dark:bg-neutral-900/50 px-3 py-1 rounded-full border border-gray-300 dark:border-neutral-800 md:border-none md:bg-transparent md:p-0 transition-colors">
@@ -206,11 +213,6 @@ const LessonPlayer: React.FC = () => {
                       
                       {/* Lesson Banner and Title */}
                       <div className="mb-8">
-                         <img
-                           src="https://placehold.co/1000x300/png"
-                           alt="Banner da Aula"
-                           className="w-full h-auto rounded-lg mb-6 object-cover shadow-sm border border-gray-200 dark:border-neutral-800"
-                         />
                          <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 dark:text-white mb-2 leading-tight">
                             {currentLesson.title}
                          </h2>
@@ -280,6 +282,13 @@ const LessonPlayer: React.FC = () => {
              <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
              
              <div className="max-w-[1600px] mx-auto w-full relative z-10">
+                {/* Banner Image */}
+                <img
+                  src="https://placehold.co/1000x300/png"
+                  alt="Banner do Curso"
+                  className="w-full h-auto rounded-lg mb-8 object-cover shadow-sm border border-gray-200 dark:border-neutral-800"
+                />
+
                 <div className="flex items-center gap-3 mb-2">
                    <div className={`w-2 h-2 rounded-full ${currentCourse.id === 'minicourse' ? 'bg-green-500' : 'bg-brand-red'}`}></div>
                    <span className="text-xs font-bold text-gray-500 dark:text-neutral-400 uppercase tracking-widest">
@@ -383,13 +392,6 @@ const LessonPlayer: React.FC = () => {
 
             {/* Lesson Info Header (Below Video) */}
             <div className="mb-8">
-                {/* Generic Banner Image */}
-                <img
-                   src="https://placehold.co/1000x300/png"
-                   alt="Banner da Aula"
-                   className="w-full h-auto rounded-lg mb-6 object-cover shadow-sm border border-gray-200 dark:border-neutral-800"
-                />
-
                 {currentLesson.courseId === 'formation' && (
                      <span className="text-xs font-bold text-brand-red uppercase tracking-wider mb-2 block">
                         Módulo {currentLesson.moduleId} • Aula {currentLesson.id - 100} 
