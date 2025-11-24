@@ -2,6 +2,12 @@ import { Lesson, Course, Module, TabOption } from '../types';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
+// Helper for random duration between 50 and 60 minutes
+const getRandomDuration = () => {
+  const minutes = Math.floor(Math.random() * (60 - 50 + 1) + 50);
+  return `${minutes}:00`;
+};
+
 // --- MINICURSO DATA ---
 const MINICOURSE_MODULE: Module = {
   id: 1,
@@ -12,36 +18,36 @@ const MINICOURSE_MODULE: Module = {
       id: 1,
       courseId: 'minicourse',
       moduleId: 1,
-      title: "Aula 1: Qualquer pessoa pode ser uma terapeuta analista corporal?",
+      title: "Qualquer pessoa pode ser uma terapeuta analista corporal?",
       releaseDate: "2023-01-01T00:00:00",
-      duration: "60 min",
+      duration: "60:00",
       isLocked: false,
     },
     {
       id: 2,
       courseId: 'minicourse',
       moduleId: 1,
-      title: "Aula 2: Quais doenças nascem das emoções?",
+      title: "Quais doenças nascem das emoções?",
       releaseDate: `${CURRENT_YEAR}-12-03T20:00:00`,
-      duration: "60 min",
+      duration: "60:00",
       isLocked: true,
     },
     {
       id: 3,
       courseId: 'minicourse',
       moduleId: 1,
-      title: "Aula 3: Análise corporal ao vivo",
+      title: "Análise corporal ao vivo",
       releaseDate: `${CURRENT_YEAR}-12-05T20:00:00`,
-      duration: "60 min",
+      duration: "60:00",
       isLocked: true,
     },
     {
       id: 4,
       courseId: 'minicourse',
       moduleId: 1,
-      title: "Aula 4: Como viver de leitura corporal?",
+      title: "Como viver de leitura corporal?",
       releaseDate: `${CURRENT_YEAR}-12-07T20:00:00`,
-      duration: "60 min",
+      duration: "60:00",
       isLocked: true,
     }
   ]
@@ -554,29 +560,30 @@ const RAW_FORMATION_DATA = [
 ];
 
 // Process Formation Data to match Types
-const getRandomDuration = () => {
-  const minutes = Math.floor(Math.random() * 11) + 50; // 50 to 60 minutes
-  const seconds = Math.floor(Math.random() * 60);
-  return `${minutes}:${String(seconds).padStart(2, '0')}`;
-};
-
 let lessonIdCounter = 101;
-let formationLessonCounter = 0;
 const FORMATION_MODULES: Module[] = RAW_FORMATION_DATA.map((mod: any) => ({
     id: mod.id,
     courseId: 'formation',
     title: mod.titulo,
-    lessons: mod.aulas.map((aula: any) => {
-        formationLessonCounter++;
-        const shouldKeepNull = formationLessonCounter <= 3 && aula.duracao === null;
-        const duration = shouldKeepNull ? null : (aula.duracao ?? getRandomDuration());
+    lessons: mod.aulas.map((aula: any, index: number) => {
+        let finalDuration = aula.duracao;
+
+        // Exception for Module 1, first 3 lessons (Boas Vindas, WhatsApp, Termo)
+        // Ensure they remain null (no duration)
+        if (mod.id === 1 && index < 3) {
+            finalDuration = null;
+        } 
+        // For other modules or other lessons, if duration is missing, generate random
+        else if (!finalDuration) {
+            finalDuration = getRandomDuration();
+        }
 
         return {
             id: lessonIdCounter++,
             courseId: 'formation',
             moduleId: mod.id,
             title: aula.titulo,
-            duration,
+            duration: finalDuration,
             isLocked: true, // All paid lessons locked by default
         };
     })

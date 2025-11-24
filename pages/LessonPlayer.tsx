@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Play, Lock, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, FileText, Video, Mic, BrainCircuit, Layers, BarChart3, FileBarChart, Presentation, HelpCircle } from 'lucide-react';
 import Header from '../components/Header';
 import { isLessonAvailable, formatReleaseDate } from '../constants';
-import { LESSONS, LESSON_CONTENT, ALL_MODULES } from '../data/lessons';
+import { LESSONS, LESSON_CONTENT, ALL_MODULES, COURSES } from '../data/lessons';
 import { TabOption } from '../types';
 
 const LessonPlayer: React.FC = () => {
@@ -18,14 +18,15 @@ const LessonPlayer: React.FC = () => {
 
   const currentLessonId = Number(lessonId);
   const currentLesson = LESSONS.find(l => l.id === currentLessonId);
+  const currentCourse = COURSES.find(c => c.id === currentLesson?.courseId);
   
   // Validation: if lesson doesn't exist
   useEffect(() => {
     if (!currentLesson) {
       navigate('/');
     } else {
-        // Automatically expand the module of the current lesson
-        setExpandedModuleId(currentLesson.moduleId);
+        // Automatically expand the module of the current lesson if not already expanded
+        setExpandedModuleId((prev) => prev === null ? currentLesson.moduleId : prev);
     }
   }, [currentLesson, navigate]);
 
@@ -57,7 +58,9 @@ const LessonPlayer: React.FC = () => {
     }
 
     navigate(`/aula/${id}`);
-    window.scrollTo(0,0);
+    // No window.scrollTo(0,0) needed here as the content div scrolls independently, 
+    // but we can scroll the main content div if we had a ref. 
+    // For now, let's rely on user scroll or reset if we add a ref later.
   };
 
   const toggleModule = (modId: number) => {
@@ -121,11 +124,164 @@ const LessonPlayer: React.FC = () => {
     }
   };
 
+  const renderVideoSection = () => (
+      <div className="w-full aspect-video bg-black rounded-xl border border-neutral-800 mb-8 relative overflow-hidden shadow-2xl">
+        {isContentUnlocked ? (
+        <div className="absolute inset-0 flex items-center justify-center bg-neutral-900 group cursor-pointer">
+            <div className="w-20 h-20 bg-brand-red rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition-transform">
+            <Play size={32} fill="white" className="text-white" />
+            </div>
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-800">
+            <div className="h-full w-1/4 bg-brand-red"></div>
+            </div>
+            <span className="absolute bottom-4 left-4 text-sm font-mono bg-black/50 px-2 py-1 rounded">
+            Vídeo Demonstrativo: {currentLesson.title}
+            </span>
+        </div>
+        ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-950 text-center p-6">
+            <Lock size={48} className="text-neutral-700 mb-4" />
+            <h3 className="text-xl font-heading font-bold text-neutral-300 mb-2">Aula Bloqueada</h3>
+            <p className="text-neutral-500 max-w-md mx-auto">
+                {currentLesson.courseId === 'minicourse' 
+                    ? <span>A aula estará disponível em <span className="text-brand-red">{formatReleaseDate(currentLesson.releaseDate || '')}</span>.</span>
+                    : <span>Conteúdo exclusivo para alunos matriculados na formação.</span>
+                }
+            </p>
+        </div>
+        )}
+      </div>
+  );
+
+  // --- MINICURSO LAYOUT ---
+  if (currentLesson.courseId === 'minicourse') {
+     return (
+        <div className="h-screen bg-brand-darker text-white flex flex-col overflow-hidden">
+            <Header />
+            <div className="flex-1 overflow-y-auto custom-scrollbar">
+               <main className="container mx-auto px-4 py-12 max-w-4xl">
+                  
+                  {/* Header Info */}
+                  <div className="mb-10 text-center md:text-left">
+                     <div className="inline-flex items-center gap-2 mb-4 bg-neutral-900/50 px-3 py-1 rounded-full border border-neutral-800 md:border-none md:bg-transparent md:p-0">
+                        <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></div>
+                        <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">MINICURSO GRATUITO</span>
+                     </div>
+                     <h1 className="text-3xl md:text-4xl font-heading font-bold text-white leading-tight">
+                        {currentCourse?.title}
+                     </h1>
+                  </div>
+
+                  {/* Inline Lesson List */}
+                  <div className="mb-16">
+                     <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-6">CONTEÚDO DO MINICURSO</h3>
+                     <div className="flex flex-col gap-6">
+                        {courseModules[0]?.lessons.map((lesson) => {
+                            const isActive = lesson.id === currentLessonId;
+                            const isLocked = !isLessonAvailable(lesson);
+                            return (
+                                <div 
+                                    key={lesson.id} 
+                                    onClick={() => handleLessonChange(lesson.id)}
+                                    className={`flex items-start gap-4 cursor-pointer group transition-all duration-300 ${isActive ? 'opacity-100 translate-x-1' : 'opacity-50 hover:opacity-80'}`}
+                                >
+                                    <div className={`mt-1 flex-shrink-0 ${isActive ? 'text-brand-red' : 'text-neutral-600'}`}>
+                                        {isActive ? <Play size={24} fill="currentColor" /> : (isLocked ? <Lock size={20} /> : <Play size={20} />)}
+                                    </div>
+                                    <div>
+                                        <h4 className={`font-heading font-bold text-lg md:text-xl leading-tight mb-1 transition-colors ${isActive ? 'text-white' : 'text-neutral-300 group-hover:text-white'}`}>
+                                            {lesson.title}
+                                        </h4>
+                                        <span className="text-xs font-mono text-neutral-600">{lesson.duration || '60:00'}</span>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                     </div>
+                  </div>
+
+                  {/* Content Area */}
+                  <div className="border-t border-neutral-900 pt-12 animate-fade-in-up">
+                      {renderVideoSection()}
+                      
+                      {isContentUnlocked && (
+                          <div>
+                            {/* Simplified Tabs for Minicurso */}
+                            <div className="mb-8 border-b border-neutral-800 overflow-x-auto scrollbar-hide">
+                                <div className="flex gap-8 min-w-max pb-1">
+                                {Object.values(TabOption).map((tab) => (
+                                    <button
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    className={`pb-4 text-sm font-bold uppercase tracking-wide transition-colors relative 
+                                        ${activeTab === tab ? 'text-brand-red' : 'text-neutral-500 hover:text-white'}
+                                    `}
+                                    >
+                                    {tab}
+                                    {activeTab === tab && (
+                                        <span className="absolute bottom-0 left-0 w-full h-0.5 bg-brand-red rounded-t-full"></span>
+                                    )}
+                                    </button>
+                                ))}
+                                </div>
+                            </div>
+                            {renderTabContent()}
+                          </div>
+                      )}
+                  </div>
+
+               </main>
+            </div>
+            
+             {/* Locked Modal */}
+            {showLockedModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fade-in">
+                <div className="bg-brand-black border border-neutral-800 p-8 rounded-lg shadow-2xl max-w-md w-full text-center">
+                    <Lock className="mx-auto text-neutral-600 mb-4" size={40} />
+                    <h3 className="text-xl font-heading font-bold text-white mb-2">Conteúdo Bloqueado</h3>
+                    <p className="text-neutral-400 mb-6">
+                        Esta aula será liberada em <br/>
+                        <span className="text-brand-red font-bold text-lg">{showLockedModal}</span>
+                    </p>
+                    <button 
+                        onClick={() => setShowLockedModal(null)}
+                        className="bg-white text-black hover:bg-neutral-200 font-bold py-3 px-8 rounded uppercase tracking-wide transition-colors"
+                    >
+                        Entendido
+                    </button>
+                </div>
+                </div>
+            )}
+        </div>
+     );
+  }
+
+  // --- DEFAULT FORMATION LAYOUT ---
   return (
-    <div className="min-h-screen bg-brand-darker text-white flex flex-col">
+    <div className="h-screen bg-brand-darker text-white flex flex-col overflow-hidden">
       <Header />
 
-      <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full h-[calc(100vh-80px)]">
+      {/* Course Banner */}
+      {currentCourse && (
+        <div className="bg-neutral-900 border-b border-neutral-800 py-6 px-6 md:px-12 flex-shrink-0 relative overflow-hidden">
+             {/* Background Accent */}
+             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+             
+             <div className="max-w-[1600px] mx-auto w-full relative z-10">
+                <div className="flex items-center gap-3 mb-2">
+                   <div className={`w-2 h-2 rounded-full ${currentCourse.id === 'minicourse' ? 'bg-green-500' : 'bg-brand-red'}`}></div>
+                   <span className="text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                        {currentCourse.id === 'minicourse' ? 'Minicurso Gratuito' : 'Formação Completa'}
+                   </span>
+                </div>
+                <h1 className="text-2xl md:text-3xl font-heading font-bold text-white">
+                    {currentCourse.title}
+                </h1>
+            </div>
+        </div>
+      )}
+
+      <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full overflow-hidden">
         
         {/* Sidebar */}
         <aside className="w-full lg:w-96 border-r border-neutral-900 bg-brand-black flex-shrink-0 flex flex-col h-full overflow-hidden">
@@ -136,37 +292,31 @@ const LessonPlayer: React.FC = () => {
           </div>
           
           <div className="flex-1 overflow-y-auto custom-scrollbar">
-            {courseModules.map((module, moduleIndex) => {
+            {courseModules.map((module) => {
               const isExpanded = expandedModuleId === module.id;
-              const moduleNumber = moduleIndex + 1;
               
               return (
                 <div key={module.id} className="border-b border-neutral-900/50">
                   {/* Module Header */}
                   {currentLesson.courseId === 'formation' ? (
-                     <button
+                     <button 
                         onClick={() => toggleModule(module.id)}
                         className="w-full text-left p-4 bg-neutral-900/20 hover:bg-neutral-900/40 flex items-center justify-between transition-colors"
                      >
-                        <div className="flex flex-col gap-1 pr-2">
-                          <span className="text-[11px] font-extrabold uppercase text-brand-red">Módulo {moduleNumber}</span>
-                          <h3 className="font-bold text-sm text-neutral-300 line-clamp-1">{module.title}</h3>
+                        <div>
+                          <span className="text-[10px] font-bold text-brand-red uppercase tracking-widest mb-1 block">
+                            Módulo {module.id}
+                          </span>
+                          <h3 className="font-bold text-sm text-neutral-300 line-clamp-1 pr-2">{module.title}</h3>
                         </div>
                         {isExpanded ? <ChevronUp size={16} className="text-neutral-500" /> : <ChevronDown size={16} className="text-neutral-500" />}
                      </button>
-                  ) : (
-                    <div className="w-full text-left p-4 bg-neutral-900/20 flex items-center justify-between">
-                      <div className="flex flex-col gap-1 pr-2">
-                        <span className="text-[11px] font-extrabold uppercase text-brand-red">Módulo {moduleNumber}</span>
-                        <h3 className="font-bold text-sm text-neutral-300 line-clamp-1">{module.title}</h3>
-                      </div>
-                    </div>
-                  )}
+                  ) : null}
 
                   {/* Lessons List - Show if expanded or if it's the minicourse (which has no foldable modules visually) */}
                   {(isExpanded || currentLesson.courseId === 'minicourse') && (
                       <div className="flex flex-col">
-                        {module.lessons.map((lesson, lessonIndex) => {
+                        {module.lessons.map((lesson, index) => {
                           const isActive = lesson.id === currentLessonId;
                           // Logic for sidebar lock icon
                           // Minicourse: Lock if date not passed
@@ -189,7 +339,11 @@ const LessonPlayer: React.FC = () => {
                                 {!showLockIcon ? <Play size={14} fill={isActive ? "currentColor" : "none"} /> : <Lock size={14} />}
                               </div>
                               <div className="w-full">
-                                <span className="text-[10px] font-extrabold uppercase text-brand-red block mb-1">Aula {lessonIndex + 1}</span>
+                                {currentLesson.courseId === 'formation' && (
+                                    <span className={`text-[10px] font-bold uppercase tracking-wide block mb-0.5 transition-colors ${isActive ? 'text-brand-red/80' : 'text-neutral-500 group-hover:text-brand-red/70'}`}>
+                                    Aula {index + 1}
+                                    </span>
+                                )}
                                 <h4 className={`font-medium text-xs leading-relaxed mb-1 ${isActive ? 'text-white' : 'text-neutral-400 group-hover:text-neutral-200'}`}>
                                   {lesson.title}
                                 </h4>
@@ -209,49 +363,21 @@ const LessonPlayer: React.FC = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 overflow-y-auto">
-          <div className="relative w-full h-48">
-            <img
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80"
-              alt="Banner das aulas"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-darker/80 via-brand-darker/60 to-transparent" />
-            <div className="absolute inset-0 flex items-center px-6 lg:px-12">
-              <div className="space-y-1">
-                <p className="text-xs uppercase tracking-[0.2em] text-brand-red font-extrabold">Aulas</p>
-                <h1 className="text-2xl lg:text-3xl font-heading font-bold">Explore os módulos e conteúdos disponíveis</h1>
-              </div>
-            </div>
-          </div>
-           <div className="p-6 lg:p-12">
-
+        <main className="flex-1 overflow-y-auto custom-scrollbar bg-brand-darker">
+           <div className="p-6 lg:p-12 pb-24">
+            
             {/* Video Player Area */}
-            <div className="w-full aspect-video bg-black rounded-xl border border-neutral-800 mb-8 relative overflow-hidden shadow-2xl">
-                {isContentUnlocked ? (
-                <div className="absolute inset-0 flex items-center justify-center bg-neutral-900 group cursor-pointer">
-                    <div className="w-20 h-20 bg-brand-red rounded-full flex items-center justify-center pl-1 shadow-lg group-hover:scale-110 transition-transform">
-                    <Play size={32} fill="white" className="text-white" />
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-800">
-                    <div className="h-full w-1/4 bg-brand-red"></div>
-                    </div>
-                    <span className="absolute bottom-4 left-4 text-sm font-mono bg-black/50 px-2 py-1 rounded">
-                    Vídeo Demonstrativo: {currentLesson.title}
-                    </span>
-                </div>
-                ) : (
-                <div className="absolute inset-0 flex flex-col items-center justify-center bg-neutral-950 text-center p-6">
-                    <Lock size={48} className="text-neutral-700 mb-4" />
-                    <h3 className="text-xl font-heading font-bold text-neutral-300 mb-2">Aula Bloqueada</h3>
-                    <p className="text-neutral-500 max-w-md mx-auto">
-                        {currentLesson.courseId === 'minicourse' 
-                            ? <span>A aula estará disponível em <span className="text-brand-red">{formatReleaseDate(currentLesson.releaseDate || '')}</span>.</span>
-                            : <span>Conteúdo exclusivo para alunos matriculados na formação.</span>
-                        }
-                    </p>
-                </div>
+            {renderVideoSection()}
+
+            {/* Lesson Info Header (Below Video) */}
+            <div className="mb-8">
+                {currentLesson.courseId === 'formation' && (
+                     <span className="text-xs font-bold text-brand-red uppercase tracking-wider mb-2 block">
+                        Módulo {currentLesson.moduleId} • Aula {currentLesson.id - 100} 
+                        {/* Note: ID math is a rough display approximation, real app would use array index */}
+                     </span>
                 )}
+                <h2 className="text-2xl font-heading font-bold text-white mb-2">{currentLesson.title}</h2>
             </div>
 
             {/* Tabs Navigation */}
