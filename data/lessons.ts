@@ -554,19 +554,32 @@ const RAW_FORMATION_DATA = [
 ];
 
 // Process Formation Data to match Types
+const getRandomDuration = () => {
+  const minutes = Math.floor(Math.random() * 11) + 50; // 50 to 60 minutes
+  const seconds = Math.floor(Math.random() * 60);
+  return `${minutes}:${String(seconds).padStart(2, '0')}`;
+};
+
 let lessonIdCounter = 101;
+let formationLessonCounter = 0;
 const FORMATION_MODULES: Module[] = RAW_FORMATION_DATA.map((mod: any) => ({
     id: mod.id,
     courseId: 'formation',
     title: mod.titulo,
-    lessons: mod.aulas.map((aula: any) => ({
-        id: lessonIdCounter++,
-        courseId: 'formation',
-        moduleId: mod.id,
-        title: aula.titulo,
-        duration: aula.duracao || "Variável",
-        isLocked: true, // All paid lessons locked by default
-    }))
+    lessons: mod.aulas.map((aula: any) => {
+        formationLessonCounter++;
+        const shouldKeepNull = formationLessonCounter <= 3 && aula.duracao === null;
+        const duration = shouldKeepNull ? null : (aula.duracao ?? getRandomDuration());
+
+        return {
+            id: lessonIdCounter++,
+            courseId: 'formation',
+            moduleId: mod.id,
+            title: aula.titulo,
+            duration,
+            isLocked: true, // All paid lessons locked by default
+        };
+    })
 }));
 
 // Combine Modules
