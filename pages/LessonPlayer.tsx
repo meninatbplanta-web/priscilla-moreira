@@ -136,26 +136,37 @@ const LessonPlayer: React.FC = () => {
           </div>
           
           <div className="flex-1 overflow-y-auto custom-scrollbar">
-            {courseModules.map((module) => {
+            {courseModules.map((module, moduleIndex) => {
               const isExpanded = expandedModuleId === module.id;
+              const moduleNumber = moduleIndex + 1;
               
               return (
                 <div key={module.id} className="border-b border-neutral-900/50">
                   {/* Module Header */}
                   {currentLesson.courseId === 'formation' ? (
-                     <button 
+                     <button
                         onClick={() => toggleModule(module.id)}
                         className="w-full text-left p-4 bg-neutral-900/20 hover:bg-neutral-900/40 flex items-center justify-between transition-colors"
                      >
-                        <h3 className="font-bold text-sm text-neutral-300 line-clamp-1 pr-2">{module.title}</h3>
+                        <div className="flex flex-col gap-1 pr-2">
+                          <span className="text-[11px] font-extrabold uppercase text-brand-red">Módulo {moduleNumber}</span>
+                          <h3 className="font-bold text-sm text-neutral-300 line-clamp-1">{module.title}</h3>
+                        </div>
                         {isExpanded ? <ChevronUp size={16} className="text-neutral-500" /> : <ChevronDown size={16} className="text-neutral-500" />}
                      </button>
-                  ) : null}
+                  ) : (
+                    <div className="w-full text-left p-4 bg-neutral-900/20 flex items-center justify-between">
+                      <div className="flex flex-col gap-1 pr-2">
+                        <span className="text-[11px] font-extrabold uppercase text-brand-red">Módulo {moduleNumber}</span>
+                        <h3 className="font-bold text-sm text-neutral-300 line-clamp-1">{module.title}</h3>
+                      </div>
+                    </div>
+                  )}
 
                   {/* Lessons List - Show if expanded or if it's the minicourse (which has no foldable modules visually) */}
                   {(isExpanded || currentLesson.courseId === 'minicourse') && (
                       <div className="flex flex-col">
-                        {module.lessons.map((lesson) => {
+                        {module.lessons.map((lesson, lessonIndex) => {
                           const isActive = lesson.id === currentLessonId;
                           // Logic for sidebar lock icon
                           // Minicourse: Lock if date not passed
@@ -178,6 +189,7 @@ const LessonPlayer: React.FC = () => {
                                 {!showLockIcon ? <Play size={14} fill={isActive ? "currentColor" : "none"} /> : <Lock size={14} />}
                               </div>
                               <div className="w-full">
+                                <span className="text-[10px] font-extrabold uppercase text-brand-red block mb-1">Aula {lessonIndex + 1}</span>
                                 <h4 className={`font-medium text-xs leading-relaxed mb-1 ${isActive ? 'text-white' : 'text-neutral-400 group-hover:text-neutral-200'}`}>
                                   {lesson.title}
                                 </h4>
@@ -198,8 +210,22 @@ const LessonPlayer: React.FC = () => {
 
         {/* Main Content */}
         <main className="flex-1 overflow-y-auto">
+          <div className="relative w-full h-48">
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80"
+              alt="Banner das aulas"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-darker/80 via-brand-darker/60 to-transparent" />
+            <div className="absolute inset-0 flex items-center px-6 lg:px-12">
+              <div className="space-y-1">
+                <p className="text-xs uppercase tracking-[0.2em] text-brand-red font-extrabold">Aulas</p>
+                <h1 className="text-2xl lg:text-3xl font-heading font-bold">Explore os módulos e conteúdos disponíveis</h1>
+              </div>
+            </div>
+          </div>
            <div className="p-6 lg:p-12">
-            
+
             {/* Video Player Area */}
             <div className="w-full aspect-video bg-black rounded-xl border border-neutral-800 mb-8 relative overflow-hidden shadow-2xl">
                 {isContentUnlocked ? (
