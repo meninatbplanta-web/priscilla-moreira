@@ -14,8 +14,8 @@ const Header: React.FC<HeaderProps> = ({ showBackLink = true }) => {
     <header className="w-full bg-white dark:bg-brand-black border-b border-gray-200 dark:border-neutral-900 py-6 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 transition-colors duration-300">
       <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-start">
         <div className="font-heading font-bold text-2xl tracking-wider select-none">
-          <span className="text-brand-black dark:text-white transition-colors">PRISCILLA</span>
-          <span className="text-brand-red ml-2">MOREIRA</span>
+          <Link to="/"><span className="text-brand-black dark:text-white transition-colors">PRISCILLA</span>
+          <span className="text-brand-red ml-2">MOREIRA</span></Link>
         </div>
 
         {/* Mobile Toggle (visible only on small screens next to logo if needed, but flex-col centers items so maybe not needed separate.

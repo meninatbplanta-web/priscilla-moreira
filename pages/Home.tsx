@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Play, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import LoginModal from '../components/LoginModal';
 import { COURSES } from '../data/lessons';
@@ -51,13 +52,13 @@ const Home: React.FC = () => {
                   </p>
                   
                   {/* Image Placeholder */}
-                  <div className="w-full aspect-video bg-gray-100 dark:bg-neutral-900 rounded-lg overflow-hidden mb-6 border border-gray-200 dark:border-neutral-800 relative group-hover:border-gray-300 dark:group-hover:border-neutral-700 transition-colors">
+                  <Link to="/aula/1" className="w-full aspect-video bg-gray-100 dark:bg-neutral-900 rounded-lg overflow-hidden mb-6 border border-gray-200 dark:border-neutral-800 relative group-hover:border-gray-300 dark:group-hover:border-neutral-700 transition-colors block">
                        <img 
                            src="https://priscilla-moreira.com/imagens/1.jpg" 
                            alt="Minicurso" 
                            className="w-full h-full object-cover opacity-100 dark:opacity-50 dark:grayscale group-hover:grayscale-0 dark:group-hover:opacity-80 transition-all duration-500"
                        />
-                  </div>
+                  </Link>
 
                   <div className="border-t border-gray-100 dark:border-neutral-900 pt-6 mb-8 relative z-10 mt-auto">
                     <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-neutral-500">
@@ -119,7 +120,7 @@ const Home: React.FC = () => {
                 onClick={handleFormationClick}
                 className="relative z-10 w-full bg-transparent border-2 border-brand-red text-brand-red hover:bg-brand-red hover:text-white font-bold py-4 rounded flex items-center justify-center gap-2 transition-all uppercase tracking-wider"
               >
-                Saiba Mais
+                Acessar Agora
               </button>
             </div>
           )}
