@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { ThemeProvider } from './contexts/ThemeContext';
-import './highlight.css';
+import './src/highlight.css';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
