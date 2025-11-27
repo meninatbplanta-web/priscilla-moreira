@@ -1,0 +1,18 @@
+.highlight-card {
+  animation: highlight-pulse 1.5s ease-out;
+}
+
+@keyframes highlight-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 100, 100, 0.7);
+    border-color: rgba(255, 100, 100, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 10px 5px rgba(255, 100, 100, 0.4);
+    border-color: rgba(255, 100, 100, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 100, 100, 0);
+    border-color: initial;
+  }
+}

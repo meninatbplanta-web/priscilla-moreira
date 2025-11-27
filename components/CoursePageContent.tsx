@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "../components/ui/button";
 import { Progress } from "../components/ui/progress";
 import { Badge } from "../components/ui/badge";
@@ -11,6 +11,7 @@ interface CompletedSection {
 }
 
 const CoursePageContent: React.FC = () => {
+  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [completedSections, setCompletedSections] = useState<CompletedSection>(() => {
     const saved = localStorage.getItem('lms_completedSections');
     return saved ? JSON.parse(saved) : {};
@@ -31,11 +32,53 @@ const CoursePageContent: React.FC = () => {
   }, [completedSections, userPoints, badges]);
   const [expandedExercise, setExpandedExercise] = useState<string | null>(null);
 
+    // Mapeamento das atividades por aba para controle de navegação
+  const activityMap: Record<string, string[]> = {
+    proposito: ["curar", "ajudar", "remunerado"],
+    principios: ["principios"], // Apenas um card grande
+    pilares: ["observacao", "escuta", "interpretacao"],
+    sinais: ["sinais"], // Apenas um card grande com tabela
+    exercicios: ["exercicio1", "exercicio2"],
+  };
+
   const totalSections = 10;
   const completedCount = Object.values(completedSections).filter(Boolean).length;
   const progressPercentage = (completedCount / totalSections) * 100;
 
-  const toggleSection = (sectionId: string) => {
+    const toggleSection = (sectionId: string) => {
+    setCompletedSections((prev) => {
+      const newState = { ...prev, [sectionId]: !prev[sectionId] };
+      if (!prev[sectionId]) {
+        setUserPoints((p) => p + 50);
+        checkBadges(newState);
+      } else {
+        // Revert points if unmarking, though the UI doesn't allow it yet
+        setUserPoints((p) => Math.max(0, p - 50));
+      }
+      return newState;
+    });
+  };
+
+  const handleGoToNext = (currentId: string, tabId: string) => {
+    const tabActivities = activityMap[tabId];
+    if (!tabActivities) return;
+
+    const currentIndex = tabActivities.findIndex(id => id === currentId);
+    const nextIndex = currentIndex + 1;
+
+    if (nextIndex < tabActivities.length) {
+      const nextId = tabActivities[nextIndex];
+      const nextCard = cardRefs.current[nextId];
+      if (nextCard) {
+        nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Optional: Add a temporary visual highlight (e.g., a class)
+        nextCard.classList.add('highlight-card');
+        setTimeout(() => {
+          nextCard.classList.remove('highlight-card');
+        }, 1500);
+      }
+    }
+  };
     setCompletedSections((prev) => {
       const newState = { ...prev, [sectionId]: !prev[sectionId] };
       if (!prev[sectionId]) {
@@ -188,16 +231,35 @@ const CoursePageContent: React.FC = () => {
                   { id: "ajudar", title: "Ajudar Pessoas", icon: "🤝", description: "Torne-se um ponto de apoio genuíno para familiares, amigos ou clientes. Sua capacidade de escuta se aprofunda, permitindo um acolhimento que realmente enxerga o outro." },
                   { id: "remunerado", title: "Ser Remunerado", icon: "💼", description: "Transforme o conhecimento em uma profissão com alma. Posicione-se como um profissional diferenciado e essencial no mercado atual." },
                 ].map((path) => (
-                  <Card key={path.id} className="border-2 border-slate-200 dark:border-neutral-800 hover:border-emerald-400 transition-colors cursor-pointer" onClick={() => toggleSection(path.id)}>
+                  <Card key={path.id}
+                    ref={el => cardRefs.current[path.id] = el}
+                    className="border-2 border-slate-200 dark:border-neutral-800 hover:border-emerald-400 transition-colors"
+                  >
                     <CardHeader>
                       <div className="text-3xl mb-2">{path.icon}</div>
                       <CardTitle className="text-lg text-slate-900 dark:text-white">{path.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">{path.description}</p>
-                      <Button size="sm" className={`w-full transition-all duration-300 ${completedSections[path.id] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`} onClick={(e) => { e.stopPropagation(); toggleSection(path.id); }}>
-                        {completedSections[path.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Compreendido</>) : ("Marcar como completo")}
+                      <Button size="sm"
+                        className={`w-full transition-all duration-300 ${completedSections[path.id] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
+                        onClick={(e) => { e.stopPropagation(); toggleSection(path.id); }}
+                        disabled={completedSections[path.id]}
+                      >
+                        {completedSections[path.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
                       </Button>
+                      {completedSections[path.id] && (
+                        // Check if it's the last activity in the 'proposito' tab
+                        activityMap.proposito.indexOf(path.id) < activityMap.proposito.length - 1 && (
+                          <Button
+                            size="sm"
+                            className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
+                            onClick={() => handleGoToNext(path.id, "proposito")}
+                          >
+                            👉 Ir para a próxima atividade
+                          </Button>
+                        )
+                      )}
                       <GamificationStatus />
                     </CardContent>
                   </Card>
@@ -242,9 +304,16 @@ const CoursePageContent: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <Button className={`w-full mt-6 transition-all duration-300 ${completedSections["principios"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`} size="lg" onClick={() => toggleSection("principios")}>
-                {completedSections["principios"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Compreendido</>) : ("Marcar como completo")}
+              <Button
+                ref={el => cardRefs.current["principios"] = el}
+                className={`w-full mt-6 transition-all duration-300 ${completedSections["principios"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
+                size="lg"
+                onClick={() => toggleSection("principios")}
+                disabled={completedSections["principios"]}
+              >
+                {completedSections["principios"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
               </Button>
+              {/* Última atividade da aba, não exibe o botão de próxima atividade */}
               <GamificationStatus />
             </CardContent>
           </Card>
@@ -269,7 +338,10 @@ const CoursePageContent: React.FC = () => {
                   { id: "escuta", icon: "🎧", title: "Escuta Profunda", description: "O corpo fala, mas é preciso aprender a ouvir o que está por trás do gesto. Conectar-se com a mensagem emocional.", reflection: "Pense em uma situação em que as palavras diziam uma coisa, mas você sentiu que havia outra mensagem." },
                   { id: "interpretacao", icon: "🧠", title: "Interpretação Consciente", description: "Conectar sinais físicos às emoções, sem julgamentos. Baseada nos 3 C's: Coerência, Congruência e Conjunto de Sinais.", reflection: "Como a análise dos 3 C's pode evitar que você tire conclusões precipitadas sobre o que observa?" },
                 ].map((pilar) => (
-                  <Card key={pilar.id} className="border-2 border-slate-200 dark:border-neutral-800">
+                  <Card key={pilar.id}
+                    ref={el => cardRefs.current[pilar.id] = el}
+                    className="border-2 border-slate-200 dark:border-neutral-800"
+                  >
                     <CardHeader className="pb-3">
                       <div className="flex items-start gap-3">
                         <span className="text-3xl">{pilar.icon}</span>
@@ -285,9 +357,26 @@ const CoursePageContent: React.FC = () => {
                           <span className="font-semibold">Ponto de Reflexão:</span> {pilar.reflection}
                         </p>
                       </div>
-                      <Button size="sm" className={`w-full transition-all duration-300 ${completedSections[pilar.id] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`} onClick={() => toggleSection(pilar.id)}>
-                        {completedSections[pilar.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Compreendido</>) : ("Marcar como completo")}
+                      <Button size="sm"
+                        className={`w-full transition-all duration-300 ${completedSections[pilar.id] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
+                        onClick={() => toggleSection(pilar.id)}
+                        disabled={completedSections[pilar.id]}
+                      >
+                        {completedSections[pilar.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
                       </Button>
+                      {completedSections[pilar.id] && (
+                        // Check if it's the last activity in the 'pilares' tab
+                        activityMap.pilares.indexOf(pilar.id) < activityMap.pilares.length - 1 && (
+                          <Button
+                            size="sm"
+                            className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
+                            onClick={() => handleGoToNext(pilar.id, "pilares")}
+                          >
+                            👉 Ir para a próxima atividade
+                          </Button>
+                        )
+                      )
+                      }
                       <GamificationStatus />
                     </CardContent>
                   </Card>
@@ -359,9 +448,16 @@ const CoursePageContent: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <Button className={`w-full mt-6 transition-all duration-300 ${completedSections["sinais"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`} size="lg" onClick={() => toggleSection("sinais")}>
-                {completedSections["sinais"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Compreendido</>) : ("Marcar como completo")}
+              <Button
+                ref={el => cardRefs.current["sinais"] = el}
+                className={`w-full mt-6 transition-all duration-300 ${completedSections["sinais"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
+                size="lg"
+                onClick={() => toggleSection("sinais")}
+                disabled={completedSections["sinais"]}
+              >
+                {completedSections["sinais"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
               </Button>
+              {/* Última atividade da aba, não exibe o botão de próxima atividade */}
               <GamificationStatus />
             </CardContent>
           </Card>
@@ -395,7 +491,10 @@ const CoursePageContent: React.FC = () => {
                   : "bg-purple-50/50 dark:bg-purple-900/10 border-purple-200 dark:border-purple-800";
 
                 return (
-                  <Card key={exercise.id} className={`border-2 ${cardStyle}`}>
+                  <Card key={exercise.id}
+                    ref={el => cardRefs.current[exercise.id] = el}
+                    className={`border-2 ${cardStyle}`}
+                  >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between">
                         <div>
@@ -436,9 +535,25 @@ const CoursePageContent: React.FC = () => {
                             rows={3}
                           />
                         </div>
-                        <Button className={`w-full transition-all duration-300 ${completedSections[exercise.id] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`} onClick={() => toggleSection(exercise.id)}>
-                          {completedSections[exercise.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Exercício Completo</>) : ("Marcar exercício como completo")}
+                        <Button
+                          className={`w-full transition-all duration-300 ${completedSections[exercise.id] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
+                          onClick={() => toggleSection(exercise.id)}
+                          disabled={completedSections[exercise.id]}
+                        >
+                          {completedSections[exercise.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar exercício como completo")}
                         </Button>
+                        {completedSections[exercise.id] && (
+                          // Check if it's the last activity in the 'exercicios' tab
+                          activityMap.exercicios.indexOf(exercise.id) < activityMap.exercicios.length - 1 && (
+                            <Button
+                              size="sm"
+                              className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
+                              onClick={() => handleGoToNext(exercise.id, "exercicios")}
+                            >
+                              👉 Ir para a próxima atividade
+                            </Button>
+                          )
+                        )}
                         <GamificationStatus />
                       </CardContent>
                     )}
