@@ -501,6 +501,36 @@ const CoursePageContent: React.FC = () => {
         </TabsContent>
       </Tabs>
 
+      {/* Secondary Navigation Menu */}
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="mt-12 mb-8">
+        <TabsList className="flex w-full justify-start gap-3 bg-transparent p-0 h-auto overflow-x-auto scrollbar-hide pb-2">
+          <TabsTrigger
+            value="proposito"
+            className="rounded-full px-6 py-2 h-auto text-sm font-medium transition-all duration-200 data-[state=active]:bg-brand-red data-[state=active]:text-white data-[state=active]:shadow-md bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 hover:bg-slate-50 dark:hover:bg-neutral-800"
+          >
+            Propósito
+          </TabsTrigger>
+          <TabsTrigger
+            value="principios"
+            className="rounded-full px-6 py-2 h-auto text-sm font-medium transition-all duration-200 data-[state=active]:bg-brand-red data-[state=active]:text-white data-[state=active]:shadow-md bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 hover:bg-slate-50 dark:hover:bg-neutral-800"
+          >
+            Princípios
+          </TabsTrigger>
+          <TabsTrigger
+            value="pilares"
+            className="rounded-full px-6 py-2 h-auto text-sm font-medium transition-all duration-200 data-[state=active]:bg-brand-red data-[state=active]:text-white data-[state=active]:shadow-md bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 hover:bg-slate-50 dark:hover:bg-neutral-800"
+          >
+            Pilares
+          </TabsTrigger>
+          <TabsTrigger
+            value="sinais"
+            className="rounded-full px-6 py-2 h-auto text-sm font-medium transition-all duration-200 data-[state=active]:bg-brand-red data-[state=active]:text-white data-[state=active]:shadow-md bg-white dark:bg-neutral-900 border border-slate-200 dark:border-neutral-800 hover:bg-slate-50 dark:hover:bg-neutral-800"
+          >
+            Sinais
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+
       {/* Exercises Section */}
       <section>
         <Card className="border-0 shadow-lg bg-white dark:bg-neutral-900">
@@ -539,7 +569,7 @@ const CoursePageContent: React.FC = () => {
                           <Badge variant="secondary" className="mt-2">⏱️ {exercise.duration}</Badge>
                         </div>
                         <Button variant="ghost" size="sm" onClick={() => setExpandedExercise(expandedExercise === exercise.id ? null : exercise.id)}>
-                          {expandedExercise === exercise.id ? "−" : "+"}
+                          {expandedExercise === exercise.id ? "−" : "👇 Abrir"}
                         </Button>
                       </div>
                     </CardHeader>
