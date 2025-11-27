@@ -211,7 +211,15 @@ const LessonPlayer: React.FC = () => {
                         <h4 className={`font-heading font-bold text-lg md:text-xl leading-tight mb-1 transition-colors ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-600 dark:text-neutral-300 group-hover:text-gray-900 dark:group-hover:text-white'}`}>
                           {lesson.title}
                         </h4>
-                        <span className="text-xs font-mono text-gray-500 dark:text-neutral-600">{lesson.duration || '60:00'}</span>
+                        <span className="text-xs font-mono text-gray-500 dark:text-neutral-600">
+                          {lesson.releaseDate ? (() => {
+                            const date = new Date(lesson.releaseDate);
+                            const day = date.getDate().toString().padStart(2, '0');
+                            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                            const hours = date.getHours().toString().padStart(2, '0');
+                            return `Dia ${day}/${month} ${hours}hs`;
+                          })() : (lesson.duration || '60:00')}
+                        </span>
                       </div>
                     </div>
                   );
