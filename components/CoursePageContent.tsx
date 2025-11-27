@@ -553,7 +553,7 @@ const CoursePageContent: React.FC = () => {
                               👉 Ir para a próxima atividade
                             </Button>
                           )
-                        
+                        )}
                         <GamificationStatus />
                       </CardContent>
                     )}
