@@ -12,6 +12,7 @@ interface CompletedSection {
 
 const CoursePageContent: React.FC = () => {
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const tabsRef = useRef<HTMLDivElement>(null);
   const [completedSections, setCompletedSections] = useState<CompletedSection>(() => {
     const saved = localStorage.getItem('lms_completedSections');
     return saved ? JSON.parse(saved) : {};
@@ -24,6 +25,7 @@ const CoursePageContent: React.FC = () => {
     const saved = localStorage.getItem('lms_badges');
     return saved ? JSON.parse(saved) : [];
   });
+  const [activeTab, setActiveTab] = useState('proposito');
 
   useEffect(() => {
     localStorage.setItem('lms_completedSections', JSON.stringify(completedSections));
@@ -32,7 +34,7 @@ const CoursePageContent: React.FC = () => {
   }, [completedSections, userPoints, badges]);
   const [expandedExercise, setExpandedExercise] = useState<string | null>(null);
 
-    // Mapeamento das atividades por aba para controle de navegação
+  // Mapeamento das atividades por aba para controle de navegação
   const activityMap: Record<string, string[]> = {
     proposito: ["curar", "ajudar", "remunerado"],
     principios: ["principios"], // Apenas um card grande
@@ -45,7 +47,7 @@ const CoursePageContent: React.FC = () => {
   const completedCount = Object.values(completedSections).filter(Boolean).length;
   const progressPercentage = (completedCount / totalSections) * 100;
 
-    const toggleSection = (sectionId: string) => {
+  const toggleSection = (sectionId: string) => {
     setCompletedSections((prev) => {
       const newState = { ...prev, [sectionId]: !prev[sectionId] };
       if (!prev[sectionId]) {
@@ -59,6 +61,8 @@ const CoursePageContent: React.FC = () => {
     });
   };
 
+  const tabOrder = ['proposito', 'principios', 'pilares', 'sinais'];
+
   const handleGoToNext = (currentId: string, tabId: string) => {
     const tabActivities = activityMap[tabId];
     if (!tabActivities) return;
@@ -66,16 +70,48 @@ const CoursePageContent: React.FC = () => {
     const currentIndex = tabActivities.findIndex(id => id === currentId);
     const nextIndex = currentIndex + 1;
 
+    // If there's a next activity in the same tab
     if (nextIndex < tabActivities.length) {
       const nextId = tabActivities[nextIndex];
       const nextCard = cardRefs.current[nextId];
       if (nextCard) {
         nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // Optional: Add a temporary visual highlight (e.g., a class)
         nextCard.classList.add('highlight-card');
         setTimeout(() => {
           nextCard.classList.remove('highlight-card');
         }, 1500);
+      }
+    } else {
+      // This is the last activity in the tab, go to the next tab or section
+      const currentTabIndex = tabOrder.findIndex(tab => tab === tabId);
+      if (currentTabIndex !== -1 && currentTabIndex < tabOrder.length - 1) {
+        const nextTab = tabOrder[currentTabIndex + 1];
+        // Switch to the next tab using React state
+        setActiveTab(nextTab);
+        // Wait for tab to switch, then scroll to the tabs menu
+        setTimeout(() => {
+          if (tabsRef.current) {
+            tabsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+
+          // Still highlight the first card for visual feedback
+          const firstActivityId = activityMap[nextTab]?.[0];
+          if (firstActivityId) {
+            const firstCard = cardRefs.current[firstActivityId];
+            if (firstCard) {
+              firstCard.classList.add('highlight-card');
+              setTimeout(() => {
+                firstCard.classList.remove('highlight-card');
+              }, 1500);
+            }
+          }
+        }, 300);
+      } else if (tabId === 'sinais') {
+        // After the last tab, scroll to the Exercises section
+        const exercisesSection = document.querySelector('section:has(.bg-gradient-to-r.from-cyan-500)');
+        if (exercisesSection) {
+          exercisesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     }
   };
@@ -172,7 +208,7 @@ const CoursePageContent: React.FC = () => {
       </section>
 
       {/* Main Content Tabs */}
-      <Tabs defaultValue="proposito" className="space-y-6">
+      <Tabs ref={tabsRef} value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="flex w-full justify-start gap-3 bg-transparent p-0 h-auto overflow-x-auto scrollbar-hide pb-2">
           <TabsTrigger
             value="proposito"
@@ -239,16 +275,13 @@ const CoursePageContent: React.FC = () => {
                         {completedSections[path.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
                       </Button>
                       {completedSections[path.id] && (
-                        // Check if it's the last activity in the 'proposito' tab
-                        activityMap.proposito.indexOf(path.id) < activityMap.proposito.length - 1 && (
-                          <Button
-                            size="sm"
-                            className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
-                            onClick={() => handleGoToNext(path.id, "proposito")}
-                          >
-                            👉 Ir para a próxima atividade
-                          </Button>
-                        )
+                        <Button
+                          size="sm"
+                          className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
+                          onClick={() => handleGoToNext(path.id, "proposito")}
+                        >
+                          👉 Ir para a próxima atividade
+                        </Button>
                       )}
                       <GamificationStatus />
                     </CardContent>
@@ -294,16 +327,25 @@ const CoursePageContent: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <Button
-                ref={el => cardRefs.current["principios"] = el}
-                className={`w-full mt-6 transition-all duration-300 ${completedSections["principios"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
-                size="lg"
-                onClick={() => toggleSection("principios")}
-                disabled={completedSections["principios"]}
-              >
-                {completedSections["principios"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
-              </Button>
-              {/* Última atividade da aba, não exibe o botão de próxima atividade */}
+              <div ref={el => cardRefs.current["principios"] = el}>
+                <Button
+                  className={`w-full mt-6 transition-all duration-300 ${completedSections["principios"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
+                  size="lg"
+                  onClick={() => toggleSection("principios")}
+                  disabled={completedSections["principios"]}
+                >
+                  {completedSections["principios"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
+                </Button>
+                {completedSections["principios"] && (
+                  <Button
+                    size="lg"
+                    className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
+                    onClick={() => handleGoToNext("principios", "principios")}
+                  >
+                    👉 Ir para a próxima atividade
+                  </Button>
+                )}
+              </div>
               <GamificationStatus />
             </CardContent>
           </Card>
@@ -355,18 +397,14 @@ const CoursePageContent: React.FC = () => {
                         {completedSections[pilar.id] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
                       </Button>
                       {completedSections[pilar.id] && (
-                        // Check if it's the last activity in the 'pilares' tab
-                        activityMap.pilares.indexOf(pilar.id) < activityMap.pilares.length - 1 && (
-                          <Button
-                            size="sm"
-                            className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
-                            onClick={() => handleGoToNext(pilar.id, "pilares")}
-                          >
-                            👉 Ir para a próxima atividade
-                          </Button>
-                        )
-                      )
-                      }
+                        <Button
+                          size="sm"
+                          className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
+                          onClick={() => handleGoToNext(pilar.id, "pilares")}
+                        >
+                          👉 Ir para a próxima atividade
+                        </Button>
+                      )}
                       <GamificationStatus />
                     </CardContent>
                   </Card>
@@ -438,16 +476,25 @@ const CoursePageContent: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <Button
-                ref={el => cardRefs.current["sinais"] = el}
-                className={`w-full mt-6 transition-all duration-300 ${completedSections["sinais"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
-                size="lg"
-                onClick={() => toggleSection("sinais")}
-                disabled={completedSections["sinais"]}
-              >
-                {completedSections["sinais"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
-              </Button>
-              {/* Última atividade da aba, não exibe o botão de próxima atividade */}
+              <div ref={el => cardRefs.current["sinais"] = el}>
+                <Button
+                  className={`w-full mt-6 transition-all duration-300 ${completedSections["sinais"] ? "bg-green-600 hover:bg-green-700 text-white" : "bg-slate-900 hover:bg-slate-800 text-white shadow-md"}`}
+                  size="lg"
+                  onClick={() => toggleSection("sinais")}
+                  disabled={completedSections["sinais"]}
+                >
+                  {completedSections["sinais"] ? (<><CheckCircle2 className="w-4 h-4 mr-2" />Concluído ✅</>) : ("Marcar como completo")}
+                </Button>
+                {completedSections["sinais"] && (
+                  <Button
+                    size="lg"
+                    className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
+                    onClick={() => handleGoToNext("sinais", "sinais")}
+                  >
+                    👉 Ir para a próxima seção
+                  </Button>
+                )}
+              </div>
               <GamificationStatus />
             </CardContent>
           </Card>
@@ -519,8 +566,8 @@ const CoursePageContent: React.FC = () => {
                           <textarea
                             placeholder="Anote aqui suas observações e sensações durante o exercício..."
                             className={`w-full p-3 border rounded text-sm focus:outline-none focus:ring-2 dark:bg-neutral-800 dark:text-white ${isEx1
-                                ? "border-blue-200 dark:border-blue-800 focus:ring-blue-500"
-                                : "border-purple-200 dark:border-purple-800 focus:ring-purple-500"
+                              ? "border-blue-200 dark:border-blue-800 focus:ring-blue-500"
+                              : "border-purple-200 dark:border-purple-800 focus:ring-purple-500"
                               }`}
                             rows={3}
                           />
@@ -534,7 +581,7 @@ const CoursePageContent: React.FC = () => {
                         </Button>
                         {completedSections[exercise.id] && (
                           // Check if it's the last activity in the 'exercicios' tab
-                         activityMap.exercicios.indexOf(exercise.id) < activityMap.exercicios.length - 1 && (
+                          activityMap.exercicios.indexOf(exercise.id) < activityMap.exercicios.length - 1 && (
                             <Button
                               size="sm"
                               className="w-full mt-2 bg-brand-red hover:bg-red-700 text-white shadow-md"
