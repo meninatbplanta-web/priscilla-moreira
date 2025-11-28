@@ -38,7 +38,7 @@ const CoursePageContent: React.FC = () => {
 
   // Mapeamento das atividades por aba para controle de navegação
   const activityMap: Record<string, string[]> = {
-    fundamentos: ["fundamentos_1", "fundamentos_key"],
+    fundamentos: ["fundamentos_1"],
     tracos_carater: ["esquizoide", "oral", "psicopata", "masoquista", "rigido"],
     alerta_saude: ["alerta_saude_content"],
     exercicios: ["ex_analise"],
@@ -254,7 +254,7 @@ const CoursePageContent: React.FC = () => {
                 <p className="text-slate-700 dark:text-slate-300 mb-4">
                   O corpo não é moldado apenas pela genética. Ele reflete as necessidades básicas vividas em 5 fases de desenvolvimento. Se a necessidade não foi atendida, o corpo criou uma defesa física e comportamental.
                 </p>
-                <Button size="sm" className={`w-full ${completedSections["fundamentos_1"] ? "bg-green-600" : "bg-slate-900"}`} onClick={() => toggleSection("fundamentos_1")}>
+                <Button size="sm" className={`w-full ${completedSections["fundamentos_1"] ? "bg-green-600" : "bg-slate-900"} text-white`} onClick={() => toggleSection("fundamentos_1")}>
                   {completedSections["fundamentos_1"] ? <><CheckCircle2 className="w-4 h-4 mr-2" />Concluído</> : "Marcar como lido"}
                 </Button>
                 {completedSections["fundamentos_1"] && (
@@ -320,7 +320,7 @@ const CoursePageContent: React.FC = () => {
                   </div>
                   <p className="text-sm italic text-slate-500 border-l-2 border-slate-300 pl-3">"{trait.story}"</p>
 
-                  <Button size="sm" className={`w-full ${completedSections[trait.id] ? "bg-green-600" : "bg-slate-900"}`} onClick={() => toggleSection(trait.id)}>
+                  <Button size="sm" className={`w-full ${completedSections[trait.id] ? "bg-green-600" : "bg-slate-900"} text-white`} onClick={() => toggleSection(trait.id)}>
                     {completedSections[trait.id] ? <><CheckCircle2 className="w-4 h-4 mr-2" />Estudado</> : "Marcar como estudado"}
                   </Button>
                   {completedSections[trait.id] && (
@@ -359,14 +359,14 @@ const CoursePageContent: React.FC = () => {
               </ul>
               <div className="bg-white dark:bg-black p-4 rounded border border-red-200 dark:border-red-900 mt-4">
                 <p className="font-bold text-center text-red-600">
-                  Isso não é azar. AMANHÃ, NA AULA 2, revelaremos a Causa Emocional das Doenças e o que sua dor tenta dizer.
+                  Isso não é azar. NA AULA 2, revelaremos a Causa Emocional das Doenças e o que sua dor tenta dizer.
                 </p>
               </div>
               <Button size="lg" className={`w-full mt-4 ${completedSections["alerta_saude_content"] ? "bg-green-600" : "bg-red-600 hover:bg-red-700"}`} onClick={() => toggleSection("alerta_saude_content")}>
                 {completedSections["alerta_saude_content"] ? <><CheckCircle2 className="w-4 h-4 mr-2" />Lido e Entendido</> : "Entendi o Alerta"}
               </Button>
               {completedSections["alerta_saude_content"] && (
-                <Button size="sm" className="w-full mt-2 bg-slate-800" onClick={() => handleGoToNext("alerta_saude_content", "alerta_saude")}>
+                <Button size="sm" className="w-full mt-2 bg-slate-800 text-white" onClick={() => handleGoToNext("alerta_saude_content", "alerta_saude")}>
                   Ir para Exercícios 👉
                 </Button>
               )}
@@ -413,6 +413,11 @@ const CoursePageContent: React.FC = () => {
                   <Button className={`w-full ${completedSections["ex_analise"] ? "bg-green-600" : "bg-cyan-600 hover:bg-cyan-700"}`} onClick={() => toggleSection("ex_analise")}>
                     {completedSections["ex_analise"] ? <><CheckCircle2 className="w-4 h-4 mr-2" />Exercício Concluído</> : "Marcar como Feito"}
                   </Button>
+                  {completedSections["ex_analise"] && (
+                    <Button size="sm" className="w-full mt-2 bg-slate-800 text-white" onClick={() => document.getElementById('quiz-section')?.scrollIntoView({ behavior: 'smooth' })}>
+                      Ir para o Quiz 👉
+                    </Button>
+                  )}
                   <GamificationStatus />
                 </CardContent>
               )}
@@ -422,7 +427,7 @@ const CoursePageContent: React.FC = () => {
       </section>
 
       {/* Quiz Section */}
-      <section>
+      <section id="quiz-section">
         <Card className="border-0 shadow-lg bg-slate-50 dark:bg-neutral-900 border-t-4 border-t-amber-500">
           <CardHeader>
             <CardTitle className="text-xl text-slate-900 dark:text-white">Teste seu Conhecimento: Qual é o Traço?</CardTitle>
