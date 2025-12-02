@@ -26,7 +26,7 @@ const Aula2MobilePage: React.FC = () => {
   } = useAula2Progress();
 
   const [activeSection, setActiveSection] = useState('teoria');
-  
+
   const teoriaRef = useRef<HTMLDivElement>(null);
   const praticaRef = useRef<HTMLDivElement>(null);
   const quizRef = useRef<HTMLDivElement>(null);
@@ -175,13 +175,12 @@ const Aula2MobilePage: React.FC = () => {
                       {lateralidadeTab.content.map((card: any) => (
                         <div
                           key={card.id}
-                          className={`p-4 rounded-xl border-l-4 ${
-                            card.style === 'blue'
+                          className={`p-4 rounded-xl border-l-4 ${card.style === 'blue'
                               ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
                               : card.style === 'pink'
-                              ? 'border-pink-500 bg-pink-50 dark:bg-pink-900/20'
-                              : 'border-gray-300 bg-gray-50 dark:bg-gray-800'
-                          }`}
+                                ? 'border-pink-500 bg-pink-50 dark:bg-pink-900/20'
+                                : 'border-gray-300 bg-gray-50 dark:bg-gray-800'
+                            }`}
                         >
                           <h3 className="font-bold text-gray-900 dark:text-white mb-2">
                             {card.title}
@@ -191,11 +190,10 @@ const Aula2MobilePage: React.FC = () => {
                           </p>
                           <button
                             onClick={() => handleCompleteCard(card.id)}
-                            className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${
-                              isSectionCompleted(card.id)
+                            className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${isSectionCompleted(card.id)
                                 ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
                                 : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                            }`}
+                              }`}
                           >
                             {isSectionCompleted(card.id) ? '✓ Concluído' : card.buttonText}
                           </button>
@@ -219,42 +217,42 @@ const Aula2MobilePage: React.FC = () => {
                           'Eye': <Eye className="w-5 h-5" />,
                         };
                         return (
-                        <div
-                          key={card.id}
-                          className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
-                        >
-                          <div className="flex items-start gap-3 mb-2">
-                            <span className="text-xl">{iconMap[card.icon] || card.icon}</span>
-                            <div className="flex-1">
-                              <h3 className="font-bold text-gray-900 dark:text-white">
-                                {card.name}
-                              </h3>
-                              <p className="text-xs text-gray-600 dark:text-neutral-400">
-                                {card.archetype}
-                              </p>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
-                            <strong>Corpo:</strong> {card.body}
-                          </p>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
-                            <strong>Significado:</strong> {card.pain}
-                          </p>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-3">
-                            <strong>Poder:</strong> {card.power}
-                          </p>
-                          <button
-                            onClick={() => handleCompleteCard(card.id)}
-                            className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${
-                              isSectionCompleted(card.id)
-                                ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                                : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                            }`}
+                          <div
+                            key={card.id}
+                            className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
                           >
-                            {isSectionCompleted(card.id) ? '✓ Concluído' : card.buttonText}
-                          </button>
-                        </div>
-                      ))}
+                            <div className="flex items-start gap-3 mb-2">
+                              <span className="text-xl">{iconMap[card.icon] || card.icon}</span>
+                              <div className="flex-1">
+                                <h3 className="font-bold text-gray-900 dark:text-white">
+                                  {card.name}
+                                </h3>
+                                <p className="text-xs text-gray-600 dark:text-neutral-400">
+                                  {card.archetype}
+                                </p>
+                              </div>
+                            </div>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
+                              <strong>Corpo:</strong> {card.body}
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
+                              <strong>Significado:</strong> {card.pain}
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-3">
+                              <strong>Poder:</strong> {card.power}
+                            </p>
+                            <button
+                              onClick={() => handleCompleteCard(card.id)}
+                              className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${isSectionCompleted(card.id)
+                                  ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                                  : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                                }`}
+                            >
+                              {isSectionCompleted(card.id) ? '✓ Concluído' : card.buttonText}
+                            </button>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 )}
@@ -273,43 +271,43 @@ const Aula2MobilePage: React.FC = () => {
                           'Wind': <Wind className="w-5 h-5" />,
                         };
                         return (
-                        <div
-                          key={card.id}
-                          className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
-                        >
-                          <div className="flex items-start gap-3 mb-2">
-                            <span className="text-xl">{iconMap[card.icon] || card.icon}</span>
-                            <div className="flex-1">
-                              <h3 className="font-bold text-gray-900 dark:text-white">
-                                {card.name}
-                              </h3>
-                              <p className="text-xs text-gray-600 dark:text-neutral-400">
-                                {card.archetype}
-                              </p>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
-                            <strong>Corpo:</strong> {card.body}
-                          </p>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
-                            <strong>Significado:</strong> {card.pain}
-                          </p>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-3">
-                            <strong>Poder:</strong> {card.power}
-                          </p>
-                          <button
-                            onClick={() => handleCompleteCard(card.id)}
-                            className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${
-                              isSectionCompleted(card.id)
-                                ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                                : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                            }`}
+                          <div
+                            key={card.id}
+                            className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
                           >
-                            {isSectionCompleted(card.id) ? '✓ Concluído' : card.buttonText}
-                          </button>
-                        </div>
-                      );
+                            <div className="flex items-start gap-3 mb-2">
+                              <span className="text-xl">{iconMap[card.icon] || card.icon}</span>
+                              <div className="flex-1">
+                                <h3 className="font-bold text-gray-900 dark:text-white">
+                                  {card.name}
+                                </h3>
+                                <p className="text-xs text-gray-600 dark:text-neutral-400">
+                                  {card.archetype}
+                                </p>
+                              </div>
+                            </div>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
+                              <strong>Corpo:</strong> {card.body}
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
+                              <strong>Significado:</strong> {card.pain}
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-3">
+                              <strong>Poder:</strong> {card.power}
+                            </p>
+                            <button
+                              onClick={() => handleCompleteCard(card.id)}
+                              className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${isSectionCompleted(card.id)
+                                  ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                                  : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                                }`}
+                            >
+                              {isSectionCompleted(card.id) ? '✓ Concluído' : card.buttonText}
+                            </button>
+                          </div>
+                        );
                       })}
+                    </div>
                   </div>
                 )}
 
@@ -327,42 +325,41 @@ const Aula2MobilePage: React.FC = () => {
                           'Activity': <Activity className="w-5 h-5" />,
                         };
                         return (
-                        <div
-                          key={card.id}
-                          className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
-                        >
-                          <div className="flex items-start gap-3 mb-2">
-                            <span className="text-xl">{iconMap[card.icon] || card.icon}</span>
-                            <div className="flex-1">
-                              <h3 className="font-bold text-gray-900 dark:text-white">
-                                {card.name}
-                              </h3>
-                              <p className="text-xs text-gray-600 dark:text-neutral-400">
-                                {card.archetype}
-                              </p>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
-                            <strong>Corpo:</strong> {card.body}
-                          </p>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
-                            <strong>Significado:</strong> {card.pain}
-                          </p>
-                          <p className="text-sm text-gray-700 dark:text-neutral-300 mb-3">
-                            <strong>Poder:</strong> {card.power}
-                          </p>
-                          <button
-                            onClick={() => handleCompleteCard(card.id)}
-                            className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${
-                              isSectionCompleted(card.id)
-                                ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
-                                : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                            }`}
+                          <div
+                            key={card.id}
+                            className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
                           >
-                            {isSectionCompleted(card.id) ? '✓ Concluído' : card.buttonText}
-                          </button>
-                        </div>
-                      );
+                            <div className="flex items-start gap-3 mb-2">
+                              <span className="text-xl">{iconMap[card.icon] || card.icon}</span>
+                              <div className="flex-1">
+                                <h3 className="font-bold text-gray-900 dark:text-white">
+                                  {card.name}
+                                </h3>
+                                <p className="text-xs text-gray-600 dark:text-neutral-400">
+                                  {card.archetype}
+                                </p>
+                              </div>
+                            </div>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
+                              <strong>Corpo:</strong> {card.body}
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-2">
+                              <strong>Significado:</strong> {card.pain}
+                            </p>
+                            <p className="text-sm text-gray-700 dark:text-neutral-300 mb-3">
+                              <strong>Poder:</strong> {card.power}
+                            </p>
+                            <button
+                              onClick={() => handleCompleteCard(card.id)}
+                              className={`text-sm font-semibold px-3 py-1 rounded-lg transition ${isSectionCompleted(card.id)
+                                  ? 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300'
+                                  : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                                }`}
+                            >
+                              {isSectionCompleted(card.id) ? '✓ Concluído' : card.buttonText}
+                            </button>
+                          </div>
+                        );
                       })}
                     </div>
                   </div>
