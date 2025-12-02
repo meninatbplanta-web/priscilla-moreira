@@ -200,15 +200,40 @@ const LessonPlayer: React.FC = () => {
         <div className="flex-1 overflow-y-auto custom-scrollbar">
           <main className="container mx-auto px-4 md:px-6 py-6 md:py-12 max-w-4xl transition-all duration-300">
 
-            {/* Banner Image */}
-            <div className="relative w-full rounded-xl overflow-hidden shadow-lg mb-8 group">
-              <img
-                src={currentJson?.page_structure?.banner?.image_url || currentJson?.page_structure?.video_player_hero?.thumbnail_url || "https://priscilla-moreira.com/imagens/minicurso-banner1.jpg"}
-                alt={currentJson?.page_structure?.banner?.alt_text || "Banner do Curso"}
-                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            </div>
+            {/* Video Banner (Aula 1 Special) */}
+            {currentLesson.id === 1 ? (
+              <>
+                <div className="relative w-full aspect-video rounded-xl md:rounded-2xl overflow-hidden shadow-lg mb-4 md:mb-6 bg-black">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src="https://www.youtube.com/embed/wo2fdlq54Bc"
+                    title="Aula 01: Fundamentos da Leitura Corporal"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="w-full h-full"
+                  ></iframe>
+                </div>
+
+                {/* Título Destacado (Aula 1 Special) */}
+                <div className="mb-8 p-4 md:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-l-4 border-blue-500 rounded-lg">
+                  <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 dark:text-white text-center">
+                    Aula 01: Fundamentos da Leitura Corporal
+                  </h2>
+                </div>
+              </>
+            ) : (
+              /* Banner Image (Other Lessons) */
+              <div className="relative w-full rounded-xl overflow-hidden shadow-lg mb-8 group">
+                <img
+                  src={currentJson?.page_structure?.banner?.image_url || currentJson?.page_structure?.video_player_hero?.thumbnail_url || "https://priscilla-moreira.com/imagens/minicurso-banner1.jpg"}
+                  alt={currentJson?.page_structure?.banner?.alt_text || "Banner do Curso"}
+                  className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            )}
 
             {/* Header Info */}
             <div className="mb-8 md:mb-10 text-center md:text-left">
