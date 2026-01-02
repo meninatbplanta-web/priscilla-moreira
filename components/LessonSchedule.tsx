@@ -85,7 +85,7 @@ const LessonSchedule: React.FC<LessonScheduleProps> = ({
                                     )}
                                 </div>
                                 <h4 className={`font-heading font-bold text-sm md:text-base leading-tight truncate transition-colors ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-800 dark:text-neutral-200'}`}>
-                                    {isActive ? `Aula ${index + 1}: ${lesson.title}` : lesson.title}
+                                    {lesson.title}
                                 </h4>
                                 <div className="flex items-center gap-2 mt-1">
                                     <span className="text-xs text-gray-500 dark:text-neutral-500 flex items-center gap-1">

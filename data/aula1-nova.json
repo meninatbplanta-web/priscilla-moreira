@@ -111,14 +111,6 @@
             "subtitle": "Conceitos base para ouvir no trânsito (12 min)",
             "url": "https://priscilla-moreira.com/imagens/audio-cpl1.m4a",
             "buttonText": "Concluir Áudio"
-          },
-          {
-            "id": "video_summary",
-            "type": "video",
-            "title": "Síntese Visual da Aula",
-            "subtitle": "Visão geral das Armaduras de Caráter",
-            "url": "https://priscilla-moreira.com/imagens/video-cpl1.mp4",
-            "buttonText": "Concluir Vídeo"
           }
         ],
         "next_step": {

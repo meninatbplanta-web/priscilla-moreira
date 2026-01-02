@@ -1,9 +1,10 @@
 import React from 'react';
-import { BookOpen, Users, FileEdit, HelpCircle, Check } from 'lucide-react';
+import { BookOpen, Users, FileEdit, HelpCircle, Check, Award } from 'lucide-react';
 
 interface NavItem {
   id: string;
   label: string;
+  subtitle?: string;
   icon: React.ReactNode;
   isCompleted?: boolean;
 }
@@ -22,27 +23,38 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
   const navItems: NavItem[] = [
     {
       id: 'teoria',
-      label: 'Teoria',
+      label: 'Aula 1',
+      subtitle: '12/01 20hs',
       icon: <BookOpen className="w-5 h-5" />,
       isCompleted: completedSections.includes('fundamentos_1') && completedSections.includes('fundamentos_key'),
     },
     {
       id: 'perfis',
-      label: 'Perfis',
+      label: 'Aula 2',
+      subtitle: '14/01 20hs',
       icon: <Users className="w-5 h-5" />,
       isCompleted: ['esquizoide', 'oral', 'psicopata', 'masoquista', 'rigido'].every(id => completedSections.includes(id)),
     },
     {
       id: 'pratica',
-      label: 'Prática',
+      label: 'Aula 3',
+      subtitle: '16/01 20hs',
       icon: <FileEdit className="w-5 h-5" />,
       isCompleted: completedSections.includes('ex_analise'),
     },
     {
       id: 'quiz',
-      label: 'Quiz',
+      label: 'Aula 4',
+      subtitle: '18/01 15hs',
       icon: <HelpCircle className="w-5 h-5" />,
       isCompleted: ['quiz_1', 'quiz_2', 'quiz_3'].every(id => completedSections.includes(id)),
+    },
+    {
+      id: 'certificado',
+      label: 'Certificado',
+      subtitle: 'Liberado 25/01',
+      icon: <Award className="w-5 h-5" />,
+      isCompleted: false,
     },
   ];
 
@@ -55,11 +67,10 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
             <button
               key={item.id}
               onClick={() => onNavigate(item.id)}
-              className={`flex flex-col items-center justify-center w-full py-2 px-1 rounded-xl transition-all duration-200 relative ${
-                isActive
-                  ? 'text-red-600 dark:text-red-500'
-                  : 'text-gray-500 dark:text-neutral-400'
-              }`}
+              className={`flex flex-col items-center justify-center w-full py-2 px-1 rounded-xl transition-all duration-200 relative ${isActive
+                ? 'text-red-600 dark:text-red-500'
+                : 'text-gray-500 dark:text-neutral-400'
+                }`}
             >
               <div className="relative">
                 {item.icon}
@@ -72,6 +83,11 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({
               <span className={`text-[10px] mt-1 font-medium ${isActive ? 'font-bold' : ''}`}>
                 {item.label}
               </span>
+              {item.subtitle && (
+                <span className="text-[9px] text-gray-400 leading-tight">
+                  {item.subtitle}
+                </span>
+              )}
               {isActive && (
                 <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-red-500 rounded-full" />
               )}
