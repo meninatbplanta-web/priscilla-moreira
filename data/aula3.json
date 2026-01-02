@@ -46,7 +46,10 @@
             "video_id": "rNHjTg5vvVk",
             "thumbnail": "https://priscilla-moreira.com/thumbnails/aula3-rosto.jpg",
             "placeholder_text": "ASSISTA AGORA: AULA 3",
-            "locked_message": null
+            "locked_message": {
+                "title": "📅 AULA 3 EM BREVE",
+                "text": "Aprenda a ler o mapa do rosto dia 16/01 às 20h."
+            }
         }
     },
     "lesson_content": {

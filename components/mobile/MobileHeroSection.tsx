@@ -10,7 +10,7 @@ interface MobileHeroSectionProps {
   isVideoUnlocked: boolean;
   videoUrl?: string;
   videoTitle?: string;
-  lockedMessage: {
+  lockedMessage?: {
     title: string;
     text: string;
   };
@@ -28,6 +28,7 @@ const MobileHeroSection: React.FC<MobileHeroSectionProps> = ({
   lockedMessage,
   onStartStudy,
 }) => {
+  // console.log('MobileHeroSection', { title, isVideoUnlocked, lockedMessage });
   return (
     <section className="relative">
       {isVideoUnlocked && videoUrl ? (
@@ -82,10 +83,10 @@ const MobileHeroSection: React.FC<MobileHeroSectionProps> = ({
             </div>
             <div className="flex-1">
               <h3 className="text-sm font-bold text-amber-900 dark:text-amber-200 mb-1">
-                {lockedMessage.title}
+                {lockedMessage ? lockedMessage.title : "Aula não disponível"}
               </h3>
               <p className="text-xs text-amber-700 dark:text-amber-300/80">
-                {lockedMessage.text}
+                {lockedMessage ? lockedMessage.text : "O conteúdo será liberado na data agendada."}
               </p>
             </div>
           </div>
