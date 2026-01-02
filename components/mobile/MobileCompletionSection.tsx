@@ -63,9 +63,7 @@ const MobileCompletionSection: React.FC<MobileCompletionSectionProps> = ({
         </div>
       </div>
 
-      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
-        Cronograma das Aulas
-      </h3>
+
 
       <LessonSchedule
         currentLessonId={lessons.find(l => l.status === 'active')?.id || 0}

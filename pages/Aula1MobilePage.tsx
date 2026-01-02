@@ -167,9 +167,7 @@ const Aula1MobilePage: React.FC = () => {
 
         {multimediaSection && (
           <div className="px-4 py-4">
-            <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              📺 Introdução Multimídia
-            </h2>
+
             <div className="space-y-4">
               {multimediaSection.items.map((item: any) => (
                 <MobileMediaPlayer
@@ -242,9 +240,7 @@ const Aula1MobilePage: React.FC = () => {
       </main>
 
       <MobileBottomNav
-        activeSection={activeSection}
-        onNavigate={handleNavigate}
-        completedSections={progress.completedSections}
+        onLessonLocked={setShowLockedModal}
       />
       <LockedLessonModal
         isOpen={!!showLockedModal}

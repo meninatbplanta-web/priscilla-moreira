@@ -333,9 +333,7 @@ const Aula4MobilePage: React.FC = () => {
             </main>
 
             <MobileBottomNav
-                activeSection={activeSection}
-                onNavigate={handleNavigate}
-                completedSections={progress.completedSections}
+                onLessonLocked={setShowLockedModal}
             />
             <LockedLessonModal
                 isOpen={!!showLockedModal}
