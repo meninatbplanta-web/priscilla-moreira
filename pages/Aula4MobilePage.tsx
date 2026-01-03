@@ -216,6 +216,11 @@ const Aula4MobilePage: React.FC = () => {
                 return (
                     <div key={section.id} className="bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl p-6 border border-indigo-100 dark:border-indigo-800 mb-8">
                         <h2 className="text-lg font-bold text-indigo-900 dark:text-indigo-100 mb-4">{section.title}</h2>
+                        {section.image && (
+                            <div className="mb-6 rounded-xl overflow-hidden shadow-sm">
+                                <img src={section.image} alt={section.title} className="w-full h-auto object-cover" />
+                            </div>
+                        )}
                         <p className="text-sm text-indigo-800 dark:text-indigo-200/80 leading-relaxed mb-6">
                             {section.content.replace(/\[cite:.*?\]/g, '').replace(/\[cite_start\]/g, '')}
                         </p>

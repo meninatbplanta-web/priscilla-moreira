@@ -173,15 +173,6 @@
                 "title": "Síntese: O Perfil Bomba-Relógio",
                 "type": "warning_block",
                 "content": "A leitura real acontece na combinação. Exemplo da 'Bomba-Relógio': Testa vincada (controle) + Sobrancelha grossa (energia de ataque) + Boca fina (segurando pressão). Essa pessoa vai explodir."
-            },
-            {
-                "id": "sec_cta",
-                "title": "O Próximo Passo",
-                "type": "call_to_action",
-                "text": "Você agora tem um superpoder. O que fará com ele? O mundo está doente emocionalmente e precisa de quem saiba 'ver'.",
-                "button_text": "Quero ser Terapeuta (Ir para Aula 4)",
-                "action_url": "/aula/4",
-                "note": "Na Aula 4, ensinaremos como transformar essa habilidade em profissão."
             }
         ]
     }

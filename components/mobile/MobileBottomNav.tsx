@@ -58,7 +58,9 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ onLessonLocked }) => 
     const releaseDate = new Date(item.date);
 
     if (now < releaseDate) {
-      onLessonLocked(item.date);
+      const dateObj = new Date(item.date);
+      const formattedDate = `${dateObj.getDate().toString().padStart(2, '0')}/${(dateObj.getMonth() + 1).toString().padStart(2, '0')} às ${dateObj.getHours().toString().padStart(2, '0')}:00`;
+      onLessonLocked(formattedDate);
       return;
     }
 
