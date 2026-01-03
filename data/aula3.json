@@ -85,9 +85,25 @@
                 "key_takeaway": "A Fisiognomia é a ciência de ler o caráter e a história estampados na face."
             },
             {
+                "id": "multimedia_aula3",
+                "type": "multimedia",
+                "title": "Material de Apoio",
+                "items": [
+                    {
+                        "id": "audio_aula3",
+                        "type": "audio",
+                        "title": "Resumo em Áudio",
+                        "subtitle": "Aprofundando a Fisiognomia (10 min)",
+                        "url": "https://priscilla-moreira.com/imagens/cpl3-audio.m4a",
+                        "buttonText": "Ouvir Explicação"
+                    }
+                ]
+            },
+            {
                 "id": "sec_andares",
                 "title": "A Arquitetura: Os 3 Andares da Face",
                 "type": "infographic_text",
+                "image": "https://priscilla-moreira.com/imagens/aula3-1.jpg",
                 "content": "Para ler um rosto, dividimos a face em três zonas principais:",
                 "bullet_points": [
                     "**1º Andar (Zona do Pensar):** Da raiz do cabelo às sobrancelhas. Representa o intelecto, a razão e a lógica.",
@@ -99,6 +115,7 @@
                 "id": "sec_pensar",
                 "title": "Analisando a Zona do Pensar",
                 "type": "detailed_list",
+                "image": "https://priscilla-moreira.com/imagens/aula3-2.jpg",
                 "items": [
                     {
                         "feature": "Cabelo Liso",
@@ -122,6 +139,7 @@
                 "id": "sec_sentir",
                 "title": "Analisando a Zona do Sentir",
                 "type": "interactive_check",
+                "image": "https://priscilla-moreira.com/imagens/aula3-3.jpg",
                 "instruction": "Pegue um espelho e teste a Lateralidade.",
                 "content": "A regra da lateralidade se aplica aos olhos:",
                 "rules": [
@@ -134,6 +152,7 @@
                 "id": "sec_agir",
                 "title": "Analisando a Zona do Agir",
                 "type": "grid_layout",
+                "image": "https://priscilla-moreira.com/imagens/aula3-4.jpg",
                 "cards": [
                     {
                         "title": "O Nariz (EGO)",

@@ -10,6 +10,7 @@ import { ArrowUp, Minimize2, Activity, Zap, RefreshCcw, Eye, Mic, Flame, Wind, C
 import MobileHeader from '../components/mobile/MobileHeader';
 import MobileBottomNav from '../components/mobile/MobileBottomNav';
 import MobileHeroSection from '../components/mobile/MobileHeroSection';
+import MobileMediaPlayer from '../components/mobile/MobileMediaPlayer';
 import MobileCompletionSection from '../components/mobile/MobileCompletionSection';
 import MobileCountdownSection from '../components/mobile/MobileCountdownSection';
 
@@ -100,10 +101,35 @@ const Aula3MobilePage: React.FC = () => {
                     </div>
                 );
 
+            case 'multimedia':
+                return (
+                    <div key={section.id} className="mb-4">
+                        <div className="space-y-4">
+                            {section.items.map((item: any) => (
+                                <MobileMediaPlayer
+                                    key={item.id}
+                                    id={item.id}
+                                    type={item.type}
+                                    title={item.title}
+                                    subtitle={item.subtitle}
+                                    url={item.url}
+                                    isCompleted={isSectionCompleted(item.id)}
+                                    onComplete={() => handleCompleteSection(item.id)}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                );
+
             case 'infographic_text':
                 return (
                     <div key={section.id} className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-gray-100 dark:border-neutral-800 mb-4">
                         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{section.title}</h2>
+                        {section.image && (
+                            <div className="mb-4 rounded-xl overflow-hidden shadow-sm">
+                                <img src={section.image} alt={section.title} className="w-full h-auto object-cover" />
+                            </div>
+                        )}
                         <p className="text-sm text-gray-700 dark:text-neutral-300 mb-4">{section.content.replace(/\[cite:.*?\]/g, '')}</p>
                         <ul className="space-y-3">
                             {section.bullet_points.map((point: string, idx: number) => (
@@ -129,6 +155,11 @@ const Aula3MobilePage: React.FC = () => {
                 return (
                     <div key={section.id} className="bg-white dark:bg-neutral-900 rounded-2xl p-5 border border-gray-100 dark:border-neutral-800 mb-4">
                         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-4">{section.title}</h2>
+                        {section.image && (
+                            <div className="mb-4 rounded-xl overflow-hidden shadow-sm">
+                                <img src={section.image} alt={section.title} className="w-full h-auto object-cover" />
+                            </div>
+                        )}
                         <div className="space-y-4">
                             {section.items.map((item: any, idx: number) => (
                                 <div key={idx} className="p-3 bg-gray-50 dark:bg-neutral-800 rounded-xl">
@@ -153,6 +184,11 @@ const Aula3MobilePage: React.FC = () => {
                 return (
                     <div key={section.id} className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-5 border border-blue-100 dark:border-blue-800 mb-4">
                         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{section.title}</h2>
+                        {section.image && (
+                            <div className="mb-4 rounded-xl overflow-hidden shadow-sm">
+                                <img src={section.image} alt={section.title} className="w-full h-auto object-cover" />
+                            </div>
+                        )}
                         <div className="flex items-start gap-3 mb-4 bg-white dark:bg-neutral-900 p-3 rounded-xl border border-blue-100 dark:border-blue-800/50">
                             <Eye className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                             <p className="text-sm text-gray-700 dark:text-neutral-300 font-medium">
@@ -183,6 +219,11 @@ const Aula3MobilePage: React.FC = () => {
                 return (
                     <div key={section.id} className="mb-4">
                         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3 px-1">{section.title}</h2>
+                        {section.image && (
+                            <div className="mb-4 rounded-xl overflow-hidden shadow-sm mx-1">
+                                <img src={section.image} alt={section.title} className="w-full h-auto object-cover" />
+                            </div>
+                        )}
                         <div className="grid gap-3">
                             {section.cards.map((card: any, idx: number) => (
                                 <div key={idx} className="bg-white dark:bg-neutral-900 p-4 rounded-xl border border-gray-100 dark:border-neutral-800 shadow-sm">

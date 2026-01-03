@@ -82,7 +82,7 @@
                 "id": "sec_recaptulacao",
                 "title": "A Jornada das Chaves",
                 "type": "summary_block",
-                "content": "Chegamos ao final com um molho de chaves na mão. Na Aula 1, descobrimos que o corpo revela a mente. Na Aula 2, ouvimos o grito das doenças e a lateralidade. [cite_start]Na Aula 3, aprendemos a ler o outdoor que é o rosto [cite: 3-8].",
+                "content": "Chegamos ao final com um molho de chaves na mão. Na Aula 1, descobrimos que o corpo revela a mente. Na Aula 2, ouvimos o grito das doenças e a lateralidade. Na Aula 3, aprendemos a ler o outdoor que é o rosto.",
                 "key_takeaway": "Ter a chave não adianta se você não souber qual porta abrir."
             },
             {
@@ -93,15 +93,15 @@
                 "stats": [
                     {
                         "value": "1º",
-                        "label": "Brasil: País mais ansioso do mundo (OMS) [cite: 19]"
+                        "label": "Brasil: País mais ansioso do mundo (OMS)"
                     },
                     {
                         "value": "2030",
-                        "label": "Estimativa de uma pessoa com depressão por família [cite: 20]"
+                        "label": "Estimativa de uma pessoa com depressão por família"
                     },
                     {
                         "value": "NR-1",
-                        "label": "Lei que obriga empresas a cuidarem da saúde mental [cite: 22]"
+                        "label": "Lei que obriga empresas a cuidarem da saúde mental"
                     }
                 ]
             },
@@ -120,9 +120,9 @@
                 "right_column": {
                     "title": "Analista Corporal",
                     "items": [
-                        "Busca a Raiz do problema [cite: 26-27]",
-                        "Atua como 'Cirurgião da Alma' [cite: 28]",
-                        "Identifica a causa emocional (lealdade, traumas) [cite: 48]"
+                        "Busca a Raiz do problema",
+                        "Atua como 'Cirurgião da Alma'",
+                        "Identifica a causa emocional (lealdade, traumas)"
                     ]
                 }
             },
@@ -130,18 +130,19 @@
                 "id": "sec_possibilidades",
                 "title": "Áreas de Atuação Profissional",
                 "type": "grid_layout",
+                "image": "https://priscilla-moreira.com/imagens/aula4-1.jpg",
                 "cards": [
                     {
                         "title": "Terapia Individual",
-                        "text": "Atendimentos em consultório ou online, alcançando pessoas em qualquer lugar do mundo[cite: 37]."
+                        "text": "Atendimentos em consultório ou online, alcançando pessoas em qualquer lugar do mundo."
                     },
                     {
                         "title": "Corporativo & RH",
-                        "text": "Palestras, treinamentos e realocação de colaboradores baseada nos traços de caráter para evitar Burnout[cite: 38]."
+                        "text": "Palestras, treinamentos e realocação de colaboradores baseada nos traços de caráter para evitar Burnout."
                     },
                     {
                         "title": "Grupos Terapêuticos",
-                        "text": "Tratamento coletivo e dinâmicas de grupo para resolução de conflitos sistêmicos[cite: 39]."
+                        "text": "Tratamento coletivo e dinâmicas de grupo para resolução de conflitos sistêmicos."
                     }
                 ]
             },
@@ -149,8 +150,8 @@
                 "id": "sec_encerramento",
                 "title": "A Encruzilhada: Sua Escolha",
                 "type": "reflective_block",
-                "content": "Diante de todo esse conhecimento, existem dois caminhos. O primeiro é guardar tudo na gaveta da curiosidade. [cite_start]O segundo é transformar essa habilidade em uma missão de vida, ajudando a curar as dores reais das pessoas ao seu redor [cite: 10-13].",
-                "quote": "Só um terapeuta curado pode curar[cite: 63]."
+                "content": "Diante de todo esse conhecimento, existem dois caminhos. O primeiro é guardar tudo na gaveta da curiosidade. O segundo é transformar essa habilidade em uma missão de vida, ajudando a curar as dores reais das pessoas ao seu redor.",
+                "quote": "Só um terapeuta curado pode curar."
             },
             {
                 "id": "sec_final_cta",

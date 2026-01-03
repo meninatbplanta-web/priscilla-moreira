@@ -185,6 +185,11 @@ const Aula4MobilePage: React.FC = () => {
                 return (
                     <div key={section.id} className="mb-4">
                         <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3 px-1">{section.title}</h2>
+                        {section.image && (
+                            <div className="mb-4 rounded-xl overflow-hidden shadow-sm mx-1">
+                                <img src={section.image} alt={section.title} className="w-full h-auto object-cover" />
+                            </div>
+                        )}
                         <div className="grid gap-3">
                             {section.cards.map((card: any, idx: number) => (
                                 <div key={idx} className="bg-white dark:bg-neutral-900 p-4 rounded-xl border border-gray-100 dark:border-neutral-800 shadow-sm">
