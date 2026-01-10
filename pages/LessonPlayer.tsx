@@ -303,19 +303,25 @@ const LessonPlayer: React.FC = () => {
                     {/* Simplified Tabs for Minicurso */}
                     <div className="mb-8 overflow-x-auto scrollbar-hide -mx-6 px-6 md:mx-0 md:px-0">
                       <div className="flex gap-3 min-w-max pb-2">
-                        {Object.values(TabOption).map((tab) => (
-                          <button
-                            key={tab}
-                            onClick={() => setActiveTab(tab)}
-                            className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300 
-                                          ${activeTab === tab
-                                ? 'bg-brand-red text-white shadow-lg shadow-brand-red/20 transform scale-105'
-                                : 'bg-gray-100 dark:bg-neutral-800 text-gray-600 dark:text-neutral-400 border border-transparent hover:bg-gray-200 dark:hover:bg-neutral-700'}
-                                      `}
-                          >
-                            {tab}
-                          </button>
-                        ))}
+                        {Object.values(TabOption).map((tab) => {
+                          const label = (currentLessonId === 0 || currentLessonId === 101) && tab === TabOption.COURSE
+                            ? 'A Sua Evolução como Terapeuta'
+                            : tab;
+
+                          return (
+                            <button
+                              key={tab}
+                              onClick={() => setActiveTab(tab)}
+                              className={`px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300 
+                                            ${activeTab === tab
+                                  ? 'bg-brand-red text-white shadow-lg shadow-brand-red/20 transform scale-105'
+                                  : 'bg-gray-100 dark:bg-neutral-800 text-gray-600 dark:text-neutral-400 border border-transparent hover:bg-gray-200 dark:hover:bg-neutral-700'}
+                                        `}
+                            >
+                              {label}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
                     {renderTabContent()}

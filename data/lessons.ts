@@ -437,6 +437,7 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
   101: {
     [TabOption.COURSE]: `
       <div class="max-w-4xl mx-auto space-y-8 p-6 text-gray-800 dark:text-gray-200">
+        <img src="https://priscilla-moreira.com/imagens/formacao/aula-0.jpg" alt="Banner Aula 0" class="w-full rounded-xl shadow-lg mb-8" />
         <h1 class="text-3xl font-bold text-center text-brand-red mb-8">O Mapa da Sua Evolução: Entenda como Funciona a Formação</h1>
         
         <p class="text-lg leading-relaxed">
@@ -454,25 +455,25 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
 
           <div class="space-y-6">
             <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-2xl">🟢</div>
+              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-2xl">🔵</div>
               <div>
-                <h3 class="font-bold text-lg text-emerald-600 dark:text-emerald-400">FASE 1: O DESPERTAR (Você)</h3>
+                <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400">FASE 1: O DESPERTAR (Você)</h3>
                 <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a sua cura. Você não pode levar um cliente onde você nunca foi. Aqui, preparamos seu emocional e seu sistema nervoso para sustentar a profissão.</p>
               </div>
             </div>
 
             <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-2xl">🔵</div>
+              <div class="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center shrink-0 text-2xl">🟣</div>
               <div>
-                <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400">FASE 2: O ANALISTA (A Técnica)</h3>
+                <h3 class="font-bold text-lg text-violet-600 dark:text-violet-400">FASE 2: O ANALISTA (A Técnica)</h3>
                 <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a ferramenta. Aqui você domina a Leitura Corporal, os Traços de Caráter e o nosso método exclusivo de mapeamento.</p>
               </div>
             </div>
 
             <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center shrink-0 text-2xl">🟣</div>
+              <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center shrink-0 text-2xl">🔴</div>
               <div>
-                <h3 class="font-bold text-lg text-purple-600 dark:text-purple-400">FASE 3: O CLÍNICO (O Tratamento)</h3>
+                <h3 class="font-bold text-lg text-rose-600 dark:text-rose-400">FASE 3: O CLÍNICO (O Tratamento)</h3>
                 <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é o paciente. Você aprenderá Psicanálise, Sistêmica e Neurociência para tratar casos de ansiedade, depressão e traumas.</p>
               </div>
             </div>
