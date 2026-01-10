@@ -70,11 +70,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 1: O DESPERTAR (A Blindagem do Terapeuta)",
     "titulo": "O DNA DO TERAPEUTA DE ELITE",
     "aulas": [
-      { "titulo": "A Jornada do Herói e o Curador Ferido", "duracao": null },
-      { "titulo": "O Código de Honra e Ética", "duracao": null },
-      { "titulo": "Meta-Learning: A Ciência da Aprendizagem Acelerada", "duracao": null },
-      { "titulo": "A Neutralidade Compassiva", "duracao": null },
-      { "titulo": "O Poder do Ambiente (Comunidade)", "duracao": null }
+      { "titulo": "Aula 1 - A Jornada do Herói e o Curador Ferido", "duracao": null },
+      { "titulo": "Aula 2 - O Código de Honra e Ética", "duracao": null },
+      { "titulo": "Aula 3 - Meta-Learning: A Ciência da Aprendizagem Acelerada", "duracao": null },
+      { "titulo": "Aula 4 - A Neutralidade Compassiva", "duracao": null },
+      { "titulo": "Aula 5 - O Poder do Ambiente (Comunidade)", "duracao": null }
     ]
   },
   {
@@ -82,11 +82,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 1: O DESPERTAR (A Blindagem do Terapeuta)",
     "titulo": "A ENGENHARIA DA REALIDADE",
     "aulas": [
-      { "titulo": "A Estrutura do Ego: Persona, Sombra e Self", "duracao": null },
-      { "titulo": "O Fim da Vítima (Saindo do Triângulo Dramático)", "duracao": null },
-      { "titulo": "A Mecânica da Projeção e do Espelho", "duracao": null },
-      { "titulo": "O Vício Emocional e a Bioquímica do Sofrimento", "duracao": null },
-      { "titulo": "A Arte da Ressignificação", "duracao": null }
+      { "titulo": "Aula 6 - A Estrutura do Ego: Persona, Sombra e Self", "duracao": null },
+      { "titulo": "Aula 7 - O Fim da Vítima (Saindo do Triângulo Dramático)", "duracao": null },
+      { "titulo": "Aula 8 - A Mecânica da Projeção e do Espelho", "duracao": null },
+      { "titulo": "Aula 9 - O Vício Emocional e a Bioquímica do Sofrimento", "duracao": null },
+      { "titulo": "Aula 10 - A Arte da Ressignificação", "duracao": null }
     ]
   },
   {
@@ -94,11 +94,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 1: O DESPERTAR (A Blindagem do Terapeuta)",
     "titulo": "ARQUEOLOGIA DO SELF (A CRIANÇA INTERIOR)",
     "aulas": [
-      { "titulo": "O Mapa das 5 Feridas Emocionais", "duracao": null },
-      { "titulo": "Diagnóstico: A Criança Ferida no Comando", "duracao": null },
-      { "titulo": "Lealdades Invisíveis e Amor Cego", "duracao": null },
-      { "titulo": "Vivência Guiada: O Resgate (Prática)", "duracao": null },
-      { "titulo": "O Caminho da Gratidão Real", "duracao": null }
+      { "titulo": "Aula 11 - O Mapa das 5 Feridas Emocionais", "duracao": null },
+      { "titulo": "Aula 12 - Diagnóstico: A Criança Ferida no Comando", "duracao": null },
+      { "titulo": "Aula 13 - Lealdades Invisíveis e Amor Cego", "duracao": null },
+      { "titulo": "Aula 14 - Vivência Guiada: O Resgate (Prática)", "duracao": null },
+      { "titulo": "Aula 15 - O Caminho da Gratidão Real", "duracao": null }
     ]
   },
   {
@@ -106,11 +106,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 1: O DESPERTAR (A Blindagem do Terapeuta)",
     "titulo": "BIOHACKING E REGULAÇÃO DO SISTEMA NERVOSO",
     "aulas": [
-      { "titulo": "A Biologia da Emoção (Teoria Polivagal Descomplicada)", "duracao": null },
-      { "titulo": "Expandindo a Janela de Tolerância", "duracao": null },
-      { "titulo": "Grounding Avançado e Bioenergética", "duracao": null },
-      { "titulo": "O Corpo como Recurso de Autoridade", "duracao": null },
-      { "titulo": "Higiene do Sono e Rotina de Alta Performance", "duracao": null }
+      { "titulo": "Aula 16 - A Biologia da Emoção (Teoria Polivagal Descomplicada)", "duracao": null },
+      { "titulo": "Aula 17 - Expandindo a Janela de Tolerância", "duracao": null },
+      { "titulo": "Aula 18 - Grounding Avançado e Bioenergética", "duracao": null },
+      { "titulo": "Aula 19 - O Corpo como Recurso de Autoridade", "duracao": null },
+      { "titulo": "Aula 20 - Higiene do Sono e Rotina de Alta Performance", "duracao": null }
     ]
   },
   {
@@ -118,11 +118,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 1: O DESPERTAR (A Blindagem do Terapeuta)",
     "titulo": "AS LEIS DO INCONSCIENTE (INTRODUÇÃO SISTÊMICA)",
     "aulas": [
-      { "titulo": "O Campo Morfogenético", "duracao": null },
-      { "titulo": "As 3 Leis do Amor (Aplicadas ao Individual)", "duracao": null },
-      { "titulo": "Pai e Mãe: As Fontes da Vida e do Sucesso", "duracao": null },
-      { "titulo": "Emaranhamentos Sistêmicos", "duracao": null },
-      { "titulo": "A Virada de Chave: De Paciente a Analista", "duracao": null }
+      { "titulo": "Aula 21 - O Campo Morfogenético", "duracao": null },
+      { "titulo": "Aula 22 - As 3 Leis do Amor (Aplicadas ao Individual)", "duracao": null },
+      { "titulo": "Aula 23 - Pai e Mãe: As Fontes da Vida e do Sucesso", "duracao": null },
+      { "titulo": "Aula 24 - Emaranhamentos Sistêmicos", "duracao": null },
+      { "titulo": "Aula 25 - A Virada de Chave: De Paciente a Analista", "duracao": null }
     ]
   },
 
@@ -132,11 +132,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "FUNDAMENTOS DA BIOLOGIA DO COMPORTAMENTO",
     "aulas": [
-      { "titulo": "A História da Leitura Corporal", "duracao": null },
-      { "titulo": "Embriologia e Mielinização: A Fábrica de Caracteres", "duracao": null },
-      { "titulo": "Trauma de Desenvolvimento vs. Trauma de Choque", "duracao": null },
-      { "titulo": "O Conceito de Recurso e Dor", "duracao": null },
-      { "titulo": "Treinando o Olhar Clínico (Calibragem)", "duracao": null }
+      { "titulo": "Aula 26 - A História da Leitura Corporal", "duracao": null },
+      { "titulo": "Aula 27 - Embriologia e Mielinização: A Fábrica de Caracteres", "duracao": null },
+      { "titulo": "Aula 28 - Trauma de Desenvolvimento vs. Trauma de Choque", "duracao": null },
+      { "titulo": "Aula 29 - O Conceito de Recurso e Dor", "duracao": null },
+      { "titulo": "Aula 30 - Treinando o Olhar Clínico (Calibragem)", "duracao": null }
     ]
   },
   {
@@ -144,11 +144,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "O TRAÇO ESQUIZOIDE (A Mente Criativa)",
     "aulas": [
-      { "titulo": "Gênese do Esquizoide (Gestação e Rejeição)", "duracao": null },
-      { "titulo": "Anatomia do Esquizoide (Leitura Visual)", "duracao": null },
-      { "titulo": "A Dor da Rejeição e a Caverna", "duracao": null },
-      { "titulo": "O Recurso da Criatividade e Lógica", "duracao": null },
-      { "titulo": "Manejo e Tratamento do Esquizoide", "duracao": null }
+      { "titulo": "Aula 31 - Gênese do Esquizoide (Gestação e Rejeição)", "duracao": null },
+      { "titulo": "Aula 32 - Anatomia do Esquizoide (Leitura Visual)", "duracao": null },
+      { "titulo": "Aula 33 - A Dor da Rejeição e a Caverna", "duracao": null },
+      { "titulo": "Aula 34 - O Recurso da Criatividade e Lógica", "duracao": null },
+      { "titulo": "Aula 35 - Manejo e Tratamento do Esquizoide", "duracao": null }
     ]
   },
   {
@@ -156,11 +156,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "O TRAÇO ORAL (A Conexão Sensorial)",
     "aulas": [
-      { "titulo": "Gênese do Oral (Amamentação e Abandono)", "duracao": null },
-      { "titulo": "Anatomia do Oral (Leitura Visual)", "duracao": null },
-      { "titulo": "A Dor do Abandono e o Vazio Existencial", "duracao": null },
-      { "titulo": "O Recurso da Comunicação e Acolhimento", "duracao": null },
-      { "titulo": "Manejo e Tratamento do Oral", "duracao": null }
+      { "titulo": "Aula 36 - Gênese do Oral (Amamentação e Abandono)", "duracao": null },
+      { "titulo": "Aula 37 - Anatomia do Oral (Leitura Visual)", "duracao": null },
+      { "titulo": "Aula 38 - A Dor do Abandono e o Vazio Existencial", "duracao": null },
+      { "titulo": "Aula 39 - O Recurso da Comunicação e Acolhimento", "duracao": null },
+      { "titulo": "Aula 40 - Manejo e Tratamento do Oral", "duracao": null }
     ]
   },
   {
@@ -168,11 +168,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "O TRAÇO PSICOPATA (O Líder Articulador)",
     "aulas": [
-      { "titulo": "Gênese do Psicopata (Primeiros Passos e Manipulação)", "duracao": null },
-      { "titulo": "Anatomia do Psicopata (Leitura Visual)", "duracao": null },
-      { "titulo": "A Dor da Manipulação e a Desconfiança", "duracao": null },
-      { "titulo": "O Recurso da Liderança e Negociação", "duracao": null },
-      { "titulo": "Manejo e Tratamento do Psicopata", "duracao": null }
+      { "titulo": "Aula 41 - Gênese do Psicopata (Primeiros Passos e Manipulação)", "duracao": null },
+      { "titulo": "Aula 42 - Anatomia do Psicopata (Leitura Visual)", "duracao": null },
+      { "titulo": "Aula 43 - A Dor da Manipulação e a Desconfiança", "duracao": null },
+      { "titulo": "Aula 44 - O Recurso da Liderança e Negociação", "duracao": null },
+      { "titulo": "Aula 45 - Manejo e Tratamento do Psicopata", "duracao": null }
     ]
   },
   {
@@ -180,11 +180,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "O TRAÇO MASOQUISTA (O Executor Consistente)",
     "aulas": [
-      { "titulo": "Gênese do Masoquista (Desfralde e Humilhação)", "duracao": null },
-      { "titulo": "Anatomia do Masoquista (Leitura Visual)", "duracao": null },
-      { "titulo": "A Dor da Humilhação e a Panela de Pressão", "duracao": null },
-      { "titulo": "O Recurso da Planejamento e Lealdade", "duracao": null },
-      { "titulo": "Manejo e Tratamento do Masoquista", "duracao": null }
+      { "titulo": "Aula 46 - Gênese do Masoquista (Desfralde e Humilhação)", "duracao": null },
+      { "titulo": "Aula 47 - Anatomia do Masoquista (Leitura Visual)", "duracao": null },
+      { "titulo": "Aula 48 - A Dor da Humilhação e a Panela de Pressão", "duracao": null },
+      { "titulo": "Aula 49 - O Recurso da Planejamento e Lealdade", "duracao": null },
+      { "titulo": "Aula 50 - Manejo e Tratamento do Masoquista", "duracao": null }
     ]
   },
   {
@@ -192,11 +192,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "O TRAÇO RÍGIDO (O Realizador Ágil)",
     "aulas": [
-      { "titulo": "Gênese do Rígido (Fase Edípica e Traição)", "duracao": null },
-      { "titulo": "Anatomia do Rígido (Leitura Visual)", "duracao": null },
-      { "titulo": "A Dor da Traição e a Comparação", "duracao": null },
-      { "titulo": "O Recurso da Agilidade e Proatividade", "duracao": null },
-      { "titulo": "Manejo e Tratamento do Rígido", "duracao": null }
+      { "titulo": "Aula 51 - Gênese do Rígido (Fase Edípica e Traição)", "duracao": null },
+      { "titulo": "Aula 52 - Anatomia do Rígido (Leitura Visual)", "duracao": null },
+      { "titulo": "Aula 53 - A Dor da Traição e a Comparação", "duracao": null },
+      { "titulo": "Aula 54 - O Recurso da Agilidade e Proatividade", "duracao": null },
+      { "titulo": "Aula 55 - Manejo e Tratamento do Rígido", "duracao": null }
     ]
   },
   {
@@ -204,11 +204,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "O MÉTODO DE INTEGRAÇÃO (Exclusivo)",
     "aulas": [
-      { "titulo": "A Dinâmica dos Traços (Combinações)", "duracao": null },
-      { "titulo": "Integração dos 3 Pilares (Traço + Criança + Sistema)", "duracao": null },
-      { "titulo": "A Hierarquia da Dor", "duracao": null },
-      { "titulo": "O \"Mapa do Inferno\" vs. O \"Mapa do Céu\"", "duracao": null },
-      { "titulo": "Estudos de Caso Complexos", "duracao": null }
+      { "titulo": "Aula 56 - A Dinâmica dos Traços (Combinações)", "duracao": null },
+      { "titulo": "Aula 57 - Integração dos 3 Pilares (Traço + Criança + Sistema)", "duracao": null },
+      { "titulo": "Aula 58 - A Hierarquia da Dor", "duracao": null },
+      { "titulo": "Aula 59 - O \"Mapa do Inferno\" vs. O \"Mapa do Céu\"", "duracao": null },
+      { "titulo": "Aula 60 - Estudos de Caso Complexos", "duracao": null }
     ]
   },
   {
@@ -216,11 +216,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 2: O ANALISTA (A Técnica de Leitura Corporal)",
     "titulo": "A FERRAMENTA DE MAPEAMENTO E ANAMNESE",
     "aulas": [
-      { "titulo": "A Ferramenta Gráfica (O Gráfico de Traços)", "duracao": null },
-      { "titulo": "A Anamnese Estratégica", "duracao": null },
-      { "titulo": "O Roteiro da Primeira Sessão de Análise", "duracao": null },
-      { "titulo": "A Devolutiva Impactante", "duracao": null },
-      { "titulo": "Transição para a Terapia (Venda da Fase 3)", "duracao": null }
+      { "titulo": "Aula 61 - A Ferramenta Gráfica (O Gráfico de Traços)", "duracao": null },
+      { "titulo": "Aula 62 - A Anamnese Estratégica", "duracao": null },
+      { "titulo": "Aula 63 - O Roteiro da Primeira Sessão de Análise", "duracao": null },
+      { "titulo": "Aula 64 - A Devolutiva Impactante", "duracao": null },
+      { "titulo": "Aula 65 - Transição para a Terapia (Venda da Fase 3)", "duracao": null }
     ]
   },
 
@@ -230,11 +230,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 3: O CLÍNICO (Tratamento Profundo)",
     "titulo": "A ENGENHARIA DO INCONSCIENTE (Psicanálise)",
     "aulas": [
-      { "titulo": "O Aparelho Psíquico (Id, Ego e Superego)", "duracao": null },
-      { "titulo": "As Couraças Musculares (De Reich a Lowen)", "duracao": null },
-      { "titulo": "Mecanismos de Defesa do Ego", "duracao": null },
-      { "titulo": "Interpretação de Sonhos e Símbolos", "duracao": null },
-      { "titulo": "Pulsões de Vida e Morte", "duracao": null }
+      { "titulo": "Aula 66 - O Aparelho Psíquico (Id, Ego e Superego)", "duracao": null },
+      { "titulo": "Aula 67 - As Couraças Musculares (De Reich a Lowen)", "duracao": null },
+      { "titulo": "Aula 68 - Mecanismos de Defesa do Ego", "duracao": null },
+      { "titulo": "Aula 69 - Interpretação de Sonhos e Símbolos", "duracao": null },
+      { "titulo": "Aula 70 - Pulsões de Vida e Morte", "duracao": null }
     ]
   },
   {
@@ -242,11 +242,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 3: O CLÍNICO (Tratamento Profundo)",
     "titulo": "INTELIGÊNCIA SISTÊMICA (Leis do Amor)",
     "aulas": [
-      { "titulo": "As Ordens da Ajuda (Postura do Terapeuta)", "duracao": null },
-      { "titulo": "A Boa e a Má Consciência", "duracao": null },
-      { "titulo": "Tomando Pai e Mãe (A Fonte da Força)", "duracao": null },
-      { "titulo": "Masculino e Feminino Feridos", "duracao": null },
-      { "titulo": "Constelação na Cadeira (Exercícios Individuais)", "duracao": null }
+      { "titulo": "Aula 71 - As Ordens da Ajuda (Postura do Terapeuta)", "duracao": null },
+      { "titulo": "Aula 72 - A Boa e a Má Consciência", "duracao": null },
+      { "titulo": "Aula 73 - Tomando Pai e Mãe (A Fonte da Força)", "duracao": null },
+      { "titulo": "Aula 74 - Masculino e Feminino Feridos", "duracao": null },
+      { "titulo": "Aula 75 - Constelação na Cadeira (Exercícios Individuais)", "duracao": null }
     ]
   },
   {
@@ -254,11 +254,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 3: O CLÍNICO (Tratamento Profundo)",
     "titulo": "NEUROCIÊNCIA DO TRAUMA",
     "aulas": [
-      { "titulo": "A Anatomia do Trauma", "duracao": null },
-      { "titulo": "Neuroplasticidade e a Velocidade da Cura", "duracao": null },
-      { "titulo": "Investigação Compassiva e Camadas do Trauma", "duracao": null },
-      { "titulo": "Psicoeducação: Ensinando o Cliente a se Entender", "duracao": null },
-      { "titulo": "Metáforas Terapêuticas", "duracao": null }
+      { "titulo": "Aula 76 - A Anatomia do Trauma", "duracao": null },
+      { "titulo": "Aula 77 - Neuroplasticidade e a Velocidade da Cura", "duracao": null },
+      { "titulo": "Aula 78 - Investigação Compassiva e Camadas do Trauma", "duracao": null },
+      { "titulo": "Aula 79 - Psicoeducação: Ensinando o Cliente a se Entender", "duracao": null },
+      { "titulo": "Aula 80 - Metáforas Terapêuticas", "duracao": null }
     ]
   },
   {
@@ -266,11 +266,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 3: O CLÍNICO (Tratamento Profundo)",
     "titulo": "PROTOCOLOS CLÍNICOS I – ANSIEDADE E MEDO",
     "aulas": [
-      { "titulo": "Decodificando a Ansiedade (Visão Corporal e Sistêmica)", "duracao": null },
-      { "titulo": "\"Tudo o que temo me sobrevém\" (O Medo Antecipatório)", "duracao": null },
-      { "titulo": "Manejo de Crise em Sessão", "duracao": null },
-      { "titulo": "Ferramentas de Dissolução do Medo", "duracao": null },
-      { "titulo": "Protocolo Prático: Ansiedade Zero", "duracao": null }
+      { "titulo": "Aula 81 - Decodificando a Ansiedade (Visão Corporal e Sistêmica)", "duracao": null },
+      { "titulo": "Aula 82 - \"Tudo o que temo me sobrevém\" (O Medo Antecipatório)", "duracao": null },
+      { "titulo": "Aula 83 - Manejo de Crise em Sessão", "duracao": null },
+      { "titulo": "Aula 84 - Ferramentas de Dissolução do Medo", "duracao": null },
+      { "titulo": "Aula 85 - Protocolo Prático: Ansiedade Zero", "duracao": null }
     ]
   },
   {
@@ -278,11 +278,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 3: O CLÍNICO (Tratamento Profundo)",
     "titulo": "PROTOCOLOS CLÍNICOS II – DEPRESSÃO E CRENÇAS",
     "aulas": [
-      { "titulo": "A Depressão sob a Ótica da Análise Corporal", "duracao": null },
-      { "titulo": "Visão Sistêmica da Depressão", "duracao": null },
-      { "titulo": "Crenças Limitantes: A Raiz Mental", "duracao": null },
-      { "titulo": "Reprogramação de Crenças e Traumas", "duracao": null },
-      { "titulo": "Protocolo de Retorno à Vida", "duracao": null }
+      { "titulo": "Aula 86 - A Depressão sob a Ótica da Análise Corporal", "duracao": null },
+      { "titulo": "Aula 87 - Visão Sistêmica da Depressão", "duracao": null },
+      { "titulo": "Aula 88 - Crenças Limitantes: A Raiz Mental", "duracao": null },
+      { "titulo": "Aula 89 - Reprogramação de Crenças e Traumas", "duracao": null },
+      { "titulo": "Aula 90 - Protocolo de Retorno à Vida", "duracao": null }
     ]
   },
   {
@@ -290,11 +290,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 3: O CLÍNICO (Tratamento Profundo)",
     "titulo": "LEITURA AVANÇADA E A VERDADE",
     "aulas": [
-      { "titulo": "Emoções Primárias vs. Emoções Sociais", "duracao": null },
-      { "titulo": "A Incongruência: Quando a Boca diz Sim e o Corpo diz Não", "duracao": null },
-      { "titulo": "Leitura de Ambientes e Dinâmicas de Grupo", "duracao": null },
-      { "titulo": "O Corpo na Mentira e na Ocultação", "duracao": null },
-      { "titulo": "Devolvendo a Verdade", "duracao": null }
+      { "titulo": "Aula 91 - Emoções Primárias vs. Emoções Sociais", "duracao": null },
+      { "titulo": "Aula 92 - A Incongruência: Quando a Boca diz Sim e o Corpo diz Não", "duracao": null },
+      { "titulo": "Aula 93 - Leitura de Ambientes e Dinâmicas de Grupo", "duracao": null },
+      { "titulo": "Aula 94 - O Corpo na Mentira e na Ocultação", "duracao": null },
+      { "titulo": "Aula 95 - Devolvendo a Verdade", "duracao": null }
     ]
   },
 
@@ -304,11 +304,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 4: O PROFISSIONAL (Carreira e Negócios)",
     "titulo": "POSICIONAMENTO E IDENTIDADE",
     "aulas": [
-      { "titulo": "Paciente ou Cliente? (Posicionamento)", "duracao": null },
-      { "titulo": "Compaixão x Empatia x Piedade", "duracao": null },
-      { "titulo": "Ética e Responsabilidade Legal", "duracao": null },
-      { "titulo": "O \"Setting\" Terapêutico", "duracao": null },
-      { "titulo": "Normas de um Atendimento de Excelência", "duracao": null }
+      { "titulo": "Aula 96 - Paciente ou Cliente? (Posicionamento)", "duracao": null },
+      { "titulo": "Aula 97 - Compaixão x Empatia x Piedade", "duracao": null },
+      { "titulo": "Aula 98 - Ética e Responsabilidade Legal", "duracao": null },
+      { "titulo": "Aula 99 - O \"Setting\" Terapêutico", "duracao": null },
+      { "titulo": "Aula 100 - Normas de um Atendimento de Excelência", "duracao": null }
     ]
   },
   {
@@ -316,11 +316,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 4: O PROFISSIONAL (Carreira e Negócios)",
     "titulo": "A SESSÃO PERFEITA",
     "aulas": [
-      { "titulo": "Rapport Instantâneo e Conexão", "duracao": null },
-      { "titulo": "Escuta Ativa e Presença Plena", "duracao": null },
-      { "titulo": "Gestão de Conflitos e Resistências", "duracao": null },
-      { "titulo": "Sinais de Interesse e Desinteresse", "duracao": null },
-      { "titulo": "Fechamento e Âncoras", "duracao": null }
+      { "titulo": "Aula 101 - Rapport Instantâneo e Conexão", "duracao": null },
+      { "titulo": "Aula 102 - Escuta Ativa e Presença Plena", "duracao": null },
+      { "titulo": "Aula 103 - Gestão de Conflitos e Resistências", "duracao": null },
+      { "titulo": "Aula 104 - Sinais de Interesse e Desinteresse", "duracao": null },
+      { "titulo": "Aula 105 - Fechamento e Âncoras", "duracao": null }
     ]
   },
   {
@@ -328,11 +328,11 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 4: O PROFISSIONAL (Carreira e Negócios)",
     "titulo": "VENDA, PRECIFICAÇÃO E RETENÇÃO",
     "aulas": [
-      { "titulo": "A Psicologia da Precificação (Quanto vale a sua hora?)", "duracao": null },
-      { "titulo": "Vendendo Processos, Não Horas (LTV)", "duracao": null },
-      { "titulo": "O Script de Vendas Terapêutico", "duracao": null },
-      { "titulo": "\"Você quer o resultado ou a caminhada?\"", "duracao": null },
-      { "titulo": "Fidelização e Indicações", "duracao": null }
+      { "titulo": "Aula 106 - A Psicologia da Precificação (Quanto vale a sua hora?)", "duracao": null },
+      { "titulo": "Aula 107 - Vendendo Processos, Não Horas (LTV)", "duracao": null },
+      { "titulo": "Aula 108 - O Script de Vendas Terapêutico", "duracao": null },
+      { "titulo": "Aula 109 - \"Você quer o resultado ou a caminhada?\"", "duracao": null },
+      { "titulo": "Aula 110 - Fidelização e Indicações", "duracao": null }
     ]
   },
   {
@@ -340,10 +340,10 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 4: O PROFISSIONAL (Carreira e Negócios)",
     "titulo": "EXPANSÃO DE CARREIRA",
     "aulas": [
-      { "titulo": "Leitura Corporal Corporativa (B2B)", "duracao": null },
-      { "titulo": "Terapia em Grupo e Workshops", "duracao": null },
-      { "titulo": "Atendimento Online: Quebrando Fronteiras", "duracao": null },
-      { "titulo": "Palestras e Treinamentos", "duracao": null }
+      { "titulo": "Aula 111 - Leitura Corporal Corporativa (B2B)", "duracao": null },
+      { "titulo": "Aula 112 - Terapia em Grupo e Workshops", "duracao": null },
+      { "titulo": "Aula 113 - Atendimento Online: Quebrando Fronteiras", "duracao": null },
+      { "titulo": "Aula 114 - Palestras e Treinamentos", "duracao": null }
     ]
   },
   {
@@ -351,10 +351,10 @@ const RAW_FORMATION_DATA = [
     "phase": "FASE 4: O PROFISSIONAL (Carreira e Negócios)",
     "titulo": "O CAMINHO DO MESTRE (CONCLUSÃO)",
     "aulas": [
-      { "titulo": "A Importância da Supervisão Clínica", "duracao": null },
-      { "titulo": "O Que Mais Estudar? (Bibliografia)", "duracao": null },
-      { "titulo": "Transição de Carreira Segura", "duracao": null },
-      { "titulo": "Mensagem Final e Certificação", "duracao": null }
+      { "titulo": "Aula 115 - A Importância da Supervisão Clínica", "duracao": null },
+      { "titulo": "Aula 116 - O Que Mais Estudar? (Bibliografia)", "duracao": null },
+      { "titulo": "Aula 117 - Transição de Carreira Segura", "duracao": null },
+      { "titulo": "Aula 118 - Mensagem Final e Certificação", "duracao": null }
     ]
   }
 ];
@@ -453,36 +453,89 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
           <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Como funciona a sua Jornada?</h2>
           <p class="mb-6">O curso é dividido em 4 Fases Sequenciais. É fundamental que você respeite essa ordem:</p>
 
-          <div class="space-y-6">
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-2xl">🔵</div>
-              <div>
-                <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400">FASE 1: O DESPERTAR (Você)</h3>
-                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a sua cura. Você não pode levar um cliente onde você nunca foi. Aqui, preparamos seu emocional e seu sistema nervoso para sustentar a profissão.</p>
-              </div>
-            </div>
+          <div class="relative py-8">
+            <!-- Vertical Connecting Line -->
+            <div class="absolute left-6 top-4 bottom-4 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-amber-500 opacity-20 rounded-full"></div>
 
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center shrink-0 text-2xl">🟣</div>
-              <div>
-                <h3 class="font-bold text-lg text-violet-600 dark:text-violet-400">FASE 2: O ANALISTA (A Técnica)</h3>
-                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a ferramenta. Aqui você domina a Leitura Corporal, os Traços de Caráter e o nosso método exclusivo de mapeamento.</p>
+            <div class="space-y-12">
+              <!-- FASE 1 -->
+              <div class="relative flex items-start group">
+                <!-- Node -->
+                <div class="absolute left-0 w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 border-4 border-white dark:border-brand-black flex items-center justify-center text-xl shadow-lg z-10 group-hover:scale-110 transition-transform duration-300 ring-1 ring-blue-100 dark:ring-blue-900/50">
+                  <span class="relative z-10">🔵</span>
+                  <div class="absolute inset-0 rounded-full bg-blue-100 dark:bg-blue-500/20 animate-ping opacity-20"></div>
+                </div>
+                
+                <!-- Card -->
+                <div class="ml-16 flex-1 bg-white dark:bg-neutral-800/50 p-6 rounded-2xl border border-gray-100 dark:border-neutral-700 shadow-sm hover:shadow-md hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 relative group-hover:-translate-y-1">
+                  <!-- Arrow -->
+                  <div class="absolute top-5 -left-2 w-4 h-4 bg-white dark:bg-neutral-800/50 border-l border-b border-gray-100 dark:border-neutral-700 transform rotate-45 group-hover:border-blue-200 dark:group-hover:border-blue-800 transition-colors duration-300"></div>
+                  
+                  <h3 class="font-heading font-bold text-lg text-blue-600 dark:text-blue-400 mb-2 flex items-center gap-2">
+                    FASE 1: O DESPERTAR
+                    <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">Você</span>
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                    O foco é a sua cura. Você não pode levar um cliente onde você nunca foi. Aqui, preparamos seu emocional e seu sistema nervoso para sustentar a profissão.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center shrink-0 text-2xl">🔴</div>
-              <div>
-                <h3 class="font-bold text-lg text-rose-600 dark:text-rose-400">FASE 3: O CLÍNICO (O Tratamento)</h3>
-                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é o paciente. Você aprenderá Psicanálise, Sistêmica e Neurociência para tratar casos de ansiedade, depressão e traumas.</p>
+              <!-- FASE 2 -->
+              <div class="relative flex items-start group">
+                <div class="absolute left-0 w-12 h-12 rounded-full bg-violet-50 dark:bg-violet-900/20 border-4 border-white dark:border-brand-black flex items-center justify-center text-xl shadow-lg z-10 group-hover:scale-110 transition-transform duration-300 ring-1 ring-violet-100 dark:ring-violet-900/50">
+                  <span class="relative z-10">🟣</span>
+                </div>
+                
+                <div class="ml-16 flex-1 bg-white dark:bg-neutral-800/50 p-6 rounded-2xl border border-gray-100 dark:border-neutral-700 shadow-sm hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all duration-300 relative group-hover:-translate-y-1">
+                  <div class="absolute top-5 -left-2 w-4 h-4 bg-white dark:bg-neutral-800/50 border-l border-b border-gray-100 dark:border-neutral-700 transform rotate-45 group-hover:border-violet-200 dark:group-hover:border-violet-800 transition-colors duration-300"></div>
+                  
+                  <h3 class="font-heading font-bold text-lg text-violet-600 dark:text-violet-400 mb-2 flex items-center gap-2">
+                    FASE 2: O ANALISTA
+                    <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 border border-violet-200 dark:border-violet-800">A Técnica</span>
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                    O foco é a ferramenta. Aqui você domina a Leitura Corporal, os Traços de Caráter e o nosso método exclusivo de mapeamento.
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <div class="flex gap-4">
-              <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center shrink-0 text-2xl">🟡</div>
-              <div>
-                <h3 class="font-bold text-lg text-amber-600 dark:text-amber-400">FASE 4: O PROFISSIONAL (O Negócio)</h3>
-                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a sua conta bancária. Postura, ética, precificação e vendas para lotar sua agenda.</p>
+              <!-- FASE 3 -->
+              <div class="relative flex items-start group">
+                <div class="absolute left-0 w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-900/20 border-4 border-white dark:border-brand-black flex items-center justify-center text-xl shadow-lg z-10 group-hover:scale-110 transition-transform duration-300 ring-1 ring-rose-100 dark:ring-rose-900/50">
+                  <span class="relative z-10">🔴</span>
+                </div>
+                
+                <div class="ml-16 flex-1 bg-white dark:bg-neutral-800/50 p-6 rounded-2xl border border-gray-100 dark:border-neutral-700 shadow-sm hover:shadow-md hover:border-rose-200 dark:hover:border-rose-800 transition-all duration-300 relative group-hover:-translate-y-1">
+                  <div class="absolute top-5 -left-2 w-4 h-4 bg-white dark:bg-neutral-800/50 border-l border-b border-gray-100 dark:border-neutral-700 transform rotate-45 group-hover:border-rose-200 dark:group-hover:border-rose-800 transition-colors duration-300"></div>
+                  
+                  <h3 class="font-heading font-bold text-lg text-rose-600 dark:text-rose-400 mb-2 flex items-center gap-2">
+                    FASE 3: O CLÍNICO
+                    <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800">O Tratamento</span>
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                    O foco é o paciente. Você aprenderá Psicanálise, Sistêmica e Neurociência para tratar casos de ansiedade, depressão e traumas.
+                  </p>
+                </div>
+              </div>
+
+              <!-- FASE 4 -->
+              <div class="relative flex items-start group">
+                <div class="absolute left-0 w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-900/20 border-4 border-white dark:border-brand-black flex items-center justify-center text-xl shadow-lg z-10 group-hover:scale-110 transition-transform duration-300 ring-1 ring-amber-100 dark:ring-amber-900/50">
+                  <span class="relative z-10">🟡</span>
+                </div>
+                
+                <div class="ml-16 flex-1 bg-white dark:bg-neutral-800/50 p-6 rounded-2xl border border-gray-100 dark:border-neutral-700 shadow-sm hover:shadow-md hover:border-amber-200 dark:hover:border-amber-800 transition-all duration-300 relative group-hover:-translate-y-1">
+                  <div class="absolute top-5 -left-2 w-4 h-4 bg-white dark:bg-neutral-800/50 border-l border-b border-gray-100 dark:border-neutral-700 transform rotate-45 group-hover:border-amber-200 dark:group-hover:border-amber-800 transition-colors duration-300"></div>
+                  
+                  <h3 class="font-heading font-bold text-lg text-amber-600 dark:text-amber-400 mb-2 flex items-center gap-2">
+                    FASE 4: O PROFISSIONAL
+                    <span class="text-xs font-normal px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800">O Negócio</span>
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-sm">
+                    O foco é a sua conta bancária. Postura, ética, precificação e vendas para lotar sua agenda.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

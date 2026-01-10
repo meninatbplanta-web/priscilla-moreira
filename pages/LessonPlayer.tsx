@@ -467,7 +467,10 @@ const LessonPlayer: React.FC = () => {
                       <div className="bg-white/40 dark:bg-black/20 transition-all duration-500 ease-in-out overflow-hidden">
                         {module.lessons.map((lesson) => {
                           const isActive = lesson.id === currentLessonId;
-                          const isLocked = !isLessonAvailable(lesson);
+                          // Fix: Respect explicit isLocked property for formation course
+                          const isLocked = lesson.courseId === 'formation'
+                            ? lesson.isLocked
+                            : !isLessonAvailable(lesson);
 
                           return (
                             <div
@@ -485,7 +488,7 @@ const LessonPlayer: React.FC = () => {
                                 {isActive ? <Play size={16} fill="currentColor" /> : (isLocked ? <Lock size={16} /> : <Play size={16} />)}
                               </div>
                               <div className="flex-1">
-                                <h4 className={`font-semibold text-sm leading-tight ${isActive ? 'text-gray-900 dark:text-white' : (isLocked ? '' : 'text-gray-700 dark:text-neutral-300')}`}>
+                                <h4 className={`font-semibold text-sm leading-tight ${isActive ? 'text-gray-900 dark:text-white' : (isLocked ? '' : 'text-gray-900 dark:text-neutral-100')}`}>
                                   {lesson.title}
                                 </h4>
                               </div>
