@@ -362,33 +362,91 @@ const LessonPlayer: React.FC = () => {
                 module.phase &&
                 (index === 0 || module.phase !== prevModule?.phase);
 
+              // Helper for phase colors
+              const getPhaseStyles = (phaseName: string | undefined) => {
+                if (!phaseName) return { headerBg: 'bg-gray-100', moduleBg: 'bg-white', text: 'text-gray-500', border: 'border-l-brand-red', activeBorder: 'border-brand-red' };
+
+                const lower = phaseName.toLowerCase();
+                if (lower.includes('comece aqui')) return {
+                  headerBg: 'bg-emerald-600 dark:bg-emerald-800',
+                  moduleBg: 'bg-emerald-50/50 dark:bg-emerald-900/10',
+                  buttonBg: 'bg-emerald-50 dark:bg-emerald-900/20',
+                  hoverBg: 'hover:bg-emerald-100/50 dark:hover:bg-emerald-900/30',
+                  text: 'text-emerald-100',
+                  border: 'border-l-emerald-500',
+                  activeBorder: 'border-emerald-500'
+                };
+                if (lower.includes('fase 1')) return {
+                  headerBg: 'bg-blue-600 dark:bg-blue-800',
+                  moduleBg: 'bg-blue-50/50 dark:bg-blue-900/10',
+                  buttonBg: 'bg-blue-50 dark:bg-blue-900/20',
+                  hoverBg: 'hover:bg-blue-100/50 dark:hover:bg-blue-900/30',
+                  text: 'text-blue-100',
+                  border: 'border-l-blue-500',
+                  activeBorder: 'border-blue-500'
+                };
+                if (lower.includes('fase 2')) return {
+                  headerBg: 'bg-violet-600 dark:bg-violet-800',
+                  moduleBg: 'bg-violet-50/50 dark:bg-violet-900/10',
+                  buttonBg: 'bg-violet-50 dark:bg-violet-900/20',
+                  hoverBg: 'hover:bg-violet-100/50 dark:hover:bg-violet-900/30',
+                  text: 'text-violet-100',
+                  border: 'border-l-violet-500',
+                  activeBorder: 'border-violet-500'
+                };
+                if (lower.includes('fase 3')) return {
+                  headerBg: 'bg-rose-600 dark:bg-rose-800',
+                  moduleBg: 'bg-rose-50/50 dark:bg-rose-900/10',
+                  buttonBg: 'bg-rose-50 dark:bg-rose-900/20',
+                  hoverBg: 'hover:bg-rose-100/50 dark:hover:bg-rose-900/30',
+                  text: 'text-rose-100',
+                  border: 'border-l-rose-500',
+                  activeBorder: 'border-rose-500'
+                };
+                if (lower.includes('fase 4')) return {
+                  headerBg: 'bg-amber-600 dark:bg-amber-800',
+                  moduleBg: 'bg-amber-50/50 dark:bg-amber-900/10',
+                  buttonBg: 'bg-amber-50 dark:bg-amber-900/20',
+                  hoverBg: 'hover:bg-amber-100/50 dark:hover:bg-amber-900/30',
+                  text: 'text-amber-100',
+                  border: 'border-l-amber-500',
+                  activeBorder: 'border-amber-500'
+                };
+
+                return { headerBg: 'bg-gray-100', moduleBg: 'bg-white', text: 'text-gray-500', border: 'border-l-brand-red', activeBorder: 'border-brand-red' };
+              };
+
+              const styles = currentLesson.courseId === 'formation' ? getPhaseStyles(module.phase) : {
+                headerBg: '', moduleBg: 'bg-white', hoverBg: 'hover:bg-gray-50', text: '', border: 'border-l-brand-red', activeBorder: 'border-brand-red'
+              };
+
               return (
                 <div key={module.id}>
                   {/* Phase Header */}
                   {showPhaseHeader && (
-                    <div className="px-6 py-4 bg-gray-50/80 dark:bg-neutral-900/80 border-b border-gray-100 dark:border-neutral-800 sticky top-0 backdrop-blur-sm z-10 shadow-sm">
-                      <h3 className="text-[11px] font-bold uppercase tracking-widest text-brand-red">
+                    <div className={`px-6 py-3 ${styles.headerBg} border-b border-white/10 sticky top-0 backdrop-blur-md z-10 shadow-sm transition-colors`}>
+                      <h3 className={`text-[11px] font-bold uppercase tracking-widest text-white`}>
                         {module.phase}
                       </h3>
                     </div>
                   )}
 
-                  <div className="border-b border-gray-100 dark:border-neutral-900/50 transition-colors">
+                  <div className={`border-b border-gray-100 dark:border-neutral-900/50 transition-colors ${currentLesson.courseId === 'formation' ? styles.moduleBg : ''}`}>
                     {/* Module Header */}
                     {currentLesson.courseId === 'formation' ? (
                       <button
                         onClick={() => toggleModule(module.id)}
                         className={`w-full flex justify-between items-center p-6 text-left transition-colors duration-200 
-                          ${isExpanded ? 'bg-white dark:bg-neutral-900/30' : 'hover:bg-gray-50 dark:hover:bg-neutral-900/50'}`}
+                          ${isExpanded ? 'bg-white/50 dark:bg-black/20 shadow-inner' : `${styles.buttonBg || ''} ${styles.hoverBg}`}`}
                       >
                         <div>
-                          <p className="text-xs font-mono text-gray-400 dark:text-neutral-600 mb-1">Módulo {module.id}</p>
-                          <h3 className={`font-heading font-bold ${isExpanded ? 'text-brand-red' : 'text-gray-900 dark:text-white'}`}>
+                          <p className="text-xs font-mono text-gray-500 dark:text-neutral-500 mb-1">Módulo {module.id}</p>
+                          <h3 className={`font-heading font-bold ${isExpanded ? 'text-gray-900 dark:text-white' : 'text-gray-800 dark:text-gray-200'}`}>
                             {module.title}
                           </h3>
                         </div>
                         <ChevronDown
-                          className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180 text-brand-red' : 'text-gray-400'}`}
+                          className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180 text-gray-900' : 'text-gray-400'}`}
                           size={20}
                         />
                       </button>
@@ -400,7 +458,7 @@ const LessonPlayer: React.FC = () => {
 
                     {/* Lessons List */}
                     {isExpanded && (
-                      <div className="bg-gray-50/50 dark:bg-black/20 transition-all duration-500 ease-in-out overflow-hidden">
+                      <div className="bg-white/40 dark:bg-black/20 transition-all duration-500 ease-in-out overflow-hidden">
                         {module.lessons.map((lesson) => {
                           const isActive = lesson.id === currentLessonId;
                           const isLocked = !isLessonAvailable(lesson);
@@ -411,13 +469,13 @@ const LessonPlayer: React.FC = () => {
                               onClick={() => handleLessonChange(lesson.id)}
                               className={`flex items-center gap-4 p-4 pl-8 border-l-4 transition-colors duration-200 cursor-pointer 
                                             ${isActive
-                                  ? 'border-brand-red bg-red-50 dark:bg-red-900/10'
+                                  ? `${styles.activeBorder} bg-white dark:bg-neutral-800 shadow-sm`
                                   : isLocked
-                                    ? 'border-transparent text-gray-400 dark:text-neutral-700'
-                                    : 'border-transparent hover:bg-gray-100 dark:hover:bg-neutral-900/70'
+                                    ? 'border-transparent text-gray-400 dark:text-neutral-700 opacity-70'
+                                    : 'border-transparent hover:bg-white/60 dark:hover:bg-neutral-900/50'
                                 }`}
                             >
-                              <div className={`flex-shrink-0 ${isActive ? 'text-brand-red' : 'text-gray-400 dark:text-neutral-600'}`}>
+                              <div className={`flex-shrink-0 ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-neutral-600'}`}>
                                 {isActive ? <Play size={16} fill="currentColor" /> : (isLocked ? <Lock size={16} /> : <Play size={16} />)}
                               </div>
                               <div className="flex-1">

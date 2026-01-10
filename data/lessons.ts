@@ -434,6 +434,71 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
       <p class="text-sm text-neutral-500 mt-2">Clique no botão abaixo para baixar o PDF em alta resolução.</p>
     `,
   },
+  101: {
+    [TabOption.COURSE]: `
+      <div class="max-w-4xl mx-auto space-y-8 p-6 text-gray-800 dark:text-gray-200">
+        <h1 class="text-3xl font-bold text-center text-brand-red mb-8">O Mapa da Sua Evolução: Entenda como Funciona a Formação</h1>
+        
+        <p class="text-lg leading-relaxed">
+          Seja muito bem-vindo(a) à <strong>Formação Terapeuta Analista Corporal</strong>.<br><br>
+          Você acaba de dar o passo mais importante da sua carreira. Mas atenção: este não é um curso comum onde você apenas "assiste aulas". Esta é uma <strong>Jornada de Transformação em 4 Níveis</strong>.
+        </p>
+
+        <p class="text-lg leading-relaxed">
+          Nós desenhamos essa estrutura para que você não seja apenas um "leitor de corpos", mas um <strong>Terapeuta de Elite</strong>, capaz de tratar traumas profundos e viver muito bem dessa profissão.
+        </p>
+
+        <div class="bg-gray-50 dark:bg-neutral-900/50 p-8 rounded-xl border border-gray-100 dark:border-neutral-800 shadow-sm my-8">
+          <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Como funciona a sua Jornada?</h2>
+          <p class="mb-6">O curso é dividido em 4 Fases Sequenciais. É fundamental que você respeite essa ordem:</p>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-2xl">🟢</div>
+              <div>
+                <h3 class="font-bold text-lg text-emerald-600 dark:text-emerald-400">FASE 1: O DESPERTAR (Você)</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a sua cura. Você não pode levar um cliente onde você nunca foi. Aqui, preparamos seu emocional e seu sistema nervoso para sustentar a profissão.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-2xl">🔵</div>
+              <div>
+                <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400">FASE 2: O ANALISTA (A Técnica)</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a ferramenta. Aqui você domina a Leitura Corporal, os Traços de Caráter e o nosso método exclusivo de mapeamento.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center shrink-0 text-2xl">🟣</div>
+              <div>
+                <h3 class="font-bold text-lg text-purple-600 dark:text-purple-400">FASE 3: O CLÍNICO (O Tratamento)</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é o paciente. Você aprenderá Psicanálise, Sistêmica e Neurociência para tratar casos de ansiedade, depressão e traumas.</p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center shrink-0 text-2xl">🟡</div>
+              <div>
+                <h3 class="font-bold text-lg text-amber-600 dark:text-amber-400">FASE 4: O PROFISSIONAL (O Negócio)</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-1">O foco é a sua conta bancária. Postura, ética, precificação e vendas para lotar sua agenda.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-red-50 dark:bg-red-900/10 p-6 rounded-lg border-l-4 border-brand-red my-8">
+          <p class="font-bold text-brand-red text-lg mb-2">⚠️ Regra de Ouro: Não pule a Fase 1.</p>
+          <p>Ela é a fundação da sua autoridade.</p>
+        </div>
+
+        <p class="text-xl font-medium text-center mt-12 mb-8">
+          Assista ao vídeo acima para entender os detalhes e, em seguida, embarque no Módulo 01.<br>
+          <span class="text-brand-red block mt-2">Sua nova vida começa agora.</span>
+        </p>
+      </div>
+    `,
+  },
   2: {
     [TabOption.COURSE]: "Conteúdo sobre doenças psicossomáticas e a relação com os traços de caráter.",
   },
