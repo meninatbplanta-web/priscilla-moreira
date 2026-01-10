@@ -12,6 +12,7 @@ export interface Module {
   id: number;
   courseId: string;
   title: string;
+  phase?: string; // Added to support phases
   lessons: Lesson[];
 }
 

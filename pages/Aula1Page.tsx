@@ -81,7 +81,7 @@ const Aula1Page: React.FC = () => {
           <iframe
             width="100%"
             height="100%"
-            src="https://www.youtube.com/embed/wo2fdlq54Bc"
+            src="https://www.youtube.com/embed/kGKHPh9srOA"
             title="Aula 01: Fundamentos da Leitura Corporal"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

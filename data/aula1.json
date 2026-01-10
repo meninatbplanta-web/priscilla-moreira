@@ -16,6 +16,7 @@
             "lessons": []
         },
         "video_player": {
+            "video_id": "kGKHPh9srOA",
             "placeholder_text": "ESTREIA DIA 01/12 às 20hs",
             "locked_message": {
                 "title": "Aula Bloqueada",

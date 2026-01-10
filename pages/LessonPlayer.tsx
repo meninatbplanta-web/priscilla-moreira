@@ -214,7 +214,7 @@ const LessonPlayer: React.FC = () => {
                   <iframe
                     width="100%"
                     height="100%"
-                    src="https://www.youtube.com/embed/wo2fdlq54Bc"
+                    src={`https://www.youtube.com/embed/${currentJson?.page_structure?.video_player?.video_id || 'kGKHPh9srOA'}`}
                     title="Aula 01: Fundamentos da Leitura Corporal"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -281,7 +281,7 @@ const LessonPlayer: React.FC = () => {
 
 
 
-                {renderVideoSection()}
+                {currentLessonId !== 1 && renderVideoSection()}
 
                 {/* Conteúdo Dinâmico para todas as aulas */}
                 {currentLessonId === 1 && <DynamicLessonContent data={aula1Json.lesson_content as unknown as LessonContent} pageStructure={aula1Json.page_structure as unknown as PageStructure} />}

@@ -140,7 +140,7 @@ const Aula1MobilePage: React.FC = () => {
             subtitle={metadata.subtitle}
             badge={page_structure.header_info.badge.text}
             isVideoUnlocked={isVideoUnlocked}
-            videoUrl="https://www.youtube.com/embed/wo2fdlq54Bc"
+            videoUrl="https://www.youtube.com/embed/kGKHPh9srOA"
             videoTitle="Aula 01: Fundamentos da Leitura Corporal"
             lockedMessage={page_structure.video_player.locked_message}
             onStartStudy={handleStartStudy}

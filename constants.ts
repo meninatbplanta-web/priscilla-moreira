@@ -4,9 +4,15 @@ import { Lesson } from './types';
 // In a real app, we would check server time. Here we check client time against the date string.
 export const isLessonAvailable = (lesson: Lesson): boolean => {
   if (lesson.id === 1) return true; // Lesson 1 always free
+
   const now = new Date();
   const release = new Date(lesson.releaseDate);
-  return now >= release;
+
+  // Unlock 1 day before the scheduled date
+  const unlockDate = new Date(release);
+  unlockDate.setDate(release.getDate() - 1);
+
+  return now >= unlockDate;
 };
 
 export const formatReleaseDate = (dateStr: string) => {

@@ -139,7 +139,7 @@ const Aula2MobilePage: React.FC = () => {
             subtitle={metadata.subtitle}
             badge={page_structure.header_info.badge.text}
             isVideoUnlocked={isVideoUnlocked}
-            videoUrl="https://www.youtube.com/embed/xh5Hz9omHC0"
+            videoUrl="https://www.youtube.com/embed/EWgITy1Jr2Q"
             videoTitle="Aula 2: O Corpo Grita (Psicossomática)"
             lockedMessage={page_structure.video_player.locked_message}
             onStartStudy={handleStartStudy}

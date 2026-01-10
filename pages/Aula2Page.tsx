@@ -77,13 +77,18 @@ const Aula2Page: React.FC = () => {
 
       <main className="container mx-auto px-4 md:px-6 py-6 md:py-8 max-w-4xl">
         {/* Banner */}
-        <div className="relative w-full rounded-xl md:rounded-2xl overflow-hidden shadow-lg mb-6 md:mb-8 group">
-          <img
-            src={page_structure.banner.image_url}
-            alt={page_structure.banner.alt_text}
-            className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        {/* Video Banner */}
+        <div className="relative w-full aspect-video rounded-xl md:rounded-2xl overflow-hidden shadow-lg mb-6 md:mb-8 bg-black">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/EWgITy1Jr2Q"
+            title="Aula 2: O Corpo Grita (Psicossomática)"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+          ></iframe>
         </div>
 
         {/* Header Info */}
