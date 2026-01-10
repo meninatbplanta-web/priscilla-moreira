@@ -54,10 +54,13 @@ const LessonPlayer: React.FC = () => {
 
   const isUnlocked = currentLesson.courseId === 'minicourse'
     ? isLessonAvailable(currentLesson)
-    : false; // Paid course is always locked in preview mode
+    : !currentLesson.isLocked; // Respect isLocked property for formation (allows unlocking Lesson 0)
 
-  // Special rule: Lesson 1 contents always unlocked for minicourse. Paid course always locked.
-  const isContentUnlocked = currentLesson.courseId === 'minicourse' && (currentLesson.id === 1 || currentLesson.id === 3 || isUnlocked);
+  // Special rule: Lesson 1 contents always unlocked for minicourse.
+  // For formation, respect the isUnlocked state derived above.
+  const isContentUnlocked = currentLesson.courseId === 'minicourse'
+    ? (currentLesson.id === 1 || currentLesson.id === 3 || isUnlocked)
+    : isUnlocked;
 
   // Get next/prev lessons specifically within the context of the entire flat list
   const nextLesson = LESSONS.find(l => l.id === currentLessonId + 1 && l.courseId === currentLesson.courseId);
@@ -352,65 +355,83 @@ const LessonPlayer: React.FC = () => {
           </div>
 
           <div className="flex-1 overflow-y-auto custom-scrollbar">
-            {courseModules.map((module) => {
+            {courseModules.map((module, index) => {
               const isExpanded = expandedModuleId === module.id;
+              const prevModule = courseModules[index - 1];
+              const showPhaseHeader = currentLesson.courseId === 'formation' &&
+                module.phase &&
+                (index === 0 || module.phase !== prevModule?.phase);
 
               return (
-                <div key={module.id} className="border-b border-gray-100 dark:border-neutral-900/50 transition-colors">
-                  {/* Module Header */}
-                  {currentLesson.courseId === 'formation' ? (
-                    <button
-                      onClick={() => toggleModule(module.id)}
-                      className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 dark:hover:bg-neutral-900/50 transition-colors duration-200"
-                    >
-                      <div>
-                        <p className="text-xs font-mono text-gray-400 dark:text-neutral-600 mb-1">Módulo {module.id}</p>
+                <div key={module.id}>
+                  {/* Phase Header */}
+                  {showPhaseHeader && (
+                    <div className="px-6 py-4 bg-gray-50/80 dark:bg-neutral-900/80 border-b border-gray-100 dark:border-neutral-800 sticky top-0 backdrop-blur-sm z-10 shadow-sm">
+                      <h3 className="text-[11px] font-bold uppercase tracking-widest text-brand-red">
+                        {module.phase}
+                      </h3>
+                    </div>
+                  )}
+
+                  <div className="border-b border-gray-100 dark:border-neutral-900/50 transition-colors">
+                    {/* Module Header */}
+                    {currentLesson.courseId === 'formation' ? (
+                      <button
+                        onClick={() => toggleModule(module.id)}
+                        className={`w-full flex justify-between items-center p-6 text-left transition-colors duration-200 
+                          ${isExpanded ? 'bg-white dark:bg-neutral-900/30' : 'hover:bg-gray-50 dark:hover:bg-neutral-900/50'}`}
+                      >
+                        <div>
+                          <p className="text-xs font-mono text-gray-400 dark:text-neutral-600 mb-1">Módulo {module.id}</p>
+                          <h3 className={`font-heading font-bold ${isExpanded ? 'text-brand-red' : 'text-gray-900 dark:text-white'}`}>
+                            {module.title}
+                          </h3>
+                        </div>
+                        <ChevronDown
+                          className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180 text-brand-red' : 'text-gray-400'}`}
+                          size={20}
+                        />
+                      </button>
+                    ) : (
+                      <div className="p-6">
                         <h3 className="font-heading font-bold text-gray-900 dark:text-white">{module.title}</h3>
                       </div>
-                      <ChevronDown
-                        className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
-                        size={20}
-                      />
-                    </button>
-                  ) : (
-                    <div className="p-6">
-                      <h3 className="font-heading font-bold text-gray-900 dark:text-white">{module.title}</h3>
-                    </div>
-                  )}
+                    )}
 
-                  {/* Lessons List */}
-                  {isExpanded && (
-                    <div className="bg-gray-50/50 dark:bg-black/20 transition-all duration-500 ease-in-out overflow-hidden">
-                      {module.lessons.map((lesson) => {
-                        const isActive = lesson.id === currentLessonId;
-                        const isLocked = !isLessonAvailable(lesson);
+                    {/* Lessons List */}
+                    {isExpanded && (
+                      <div className="bg-gray-50/50 dark:bg-black/20 transition-all duration-500 ease-in-out overflow-hidden">
+                        {module.lessons.map((lesson) => {
+                          const isActive = lesson.id === currentLessonId;
+                          const isLocked = !isLessonAvailable(lesson);
 
-                        return (
-                          <div
-                            key={lesson.id}
-                            onClick={() => handleLessonChange(lesson.id)}
-                            className={`flex items-center gap-4 p-4 pl-8 border-l-4 transition-colors duration-200 cursor-pointer 
-                                          ${isActive
-                                ? 'border-brand-red bg-red-50 dark:bg-red-900/10'
-                                : isLocked
-                                  ? 'border-transparent text-gray-400 dark:text-neutral-700'
-                                  : 'border-transparent hover:bg-gray-100 dark:hover:bg-neutral-900/70'
-                              }`}
-                          >
-                            <div className={`flex-shrink-0 ${isActive ? 'text-brand-red' : 'text-gray-400 dark:text-neutral-600'}`}>
-                              {isActive ? <Play size={16} fill="currentColor" /> : (isLocked ? <Lock size={16} /> : <Play size={16} />)}
+                          return (
+                            <div
+                              key={lesson.id}
+                              onClick={() => handleLessonChange(lesson.id)}
+                              className={`flex items-center gap-4 p-4 pl-8 border-l-4 transition-colors duration-200 cursor-pointer 
+                                            ${isActive
+                                  ? 'border-brand-red bg-red-50 dark:bg-red-900/10'
+                                  : isLocked
+                                    ? 'border-transparent text-gray-400 dark:text-neutral-700'
+                                    : 'border-transparent hover:bg-gray-100 dark:hover:bg-neutral-900/70'
+                                }`}
+                            >
+                              <div className={`flex-shrink-0 ${isActive ? 'text-brand-red' : 'text-gray-400 dark:text-neutral-600'}`}>
+                                {isActive ? <Play size={16} fill="currentColor" /> : (isLocked ? <Lock size={16} /> : <Play size={16} />)}
+                              </div>
+                              <div className="flex-1">
+                                <h4 className={`font-semibold text-sm leading-tight ${isActive ? 'text-gray-900 dark:text-white' : (isLocked ? '' : 'text-gray-700 dark:text-neutral-300')}`}>
+                                  {lesson.title}
+                                </h4>
+                              </div>
+                              <span className="text-xs font-mono text-gray-400 dark:text-neutral-600">{lesson.duration || '60:00'}</span>
                             </div>
-                            <div className="flex-1">
-                              <h4 className={`font-semibold text-sm leading-tight ${isActive ? 'text-gray-900 dark:text-white' : (isLocked ? '' : 'text-gray-700 dark:text-neutral-300')}`}>
-                                {lesson.title}
-                              </h4>
-                            </div>
-                            <span className="text-xs font-mono text-gray-400 dark:text-neutral-600">{lesson.duration || '60:00'}</span>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 </div>
               );
             })}

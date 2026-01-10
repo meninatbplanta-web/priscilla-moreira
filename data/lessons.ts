@@ -55,6 +55,15 @@ export const MINICOURSE_MODULE: Module = {
 
 // --- FORMATION RAW DATA ---
 const RAW_FORMATION_DATA = [
+  // --- INTRODUÇÃO ---
+  {
+    "id": 0,
+    "phase": "COMECE AQUI",
+    "titulo": "BOAS VINDAS",
+    "aulas": [
+      { "titulo": "Aula 0: Boas Vindas e o Mapa da Formação", "duracao": "10:00" }
+    ]
+  },
   // --- FASE 1: O DESPERTAR ---
   {
     "id": 1,
@@ -376,7 +385,7 @@ const FORMATION_MODULES: Module[] = RAW_FORMATION_DATA.map((mod: any) => ({
       moduleId: mod.id,
       title: aula.titulo,
       duration: finalDuration,
-      isLocked: true, // All paid lessons locked by default
+      isLocked: mod.id === 0 ? false : true, // Unlock Module 0 (Welcome), lock others
     };
   })
 }));
