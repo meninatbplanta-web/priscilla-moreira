@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Play, Lock, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, FileText, Video, Mic, BrainCircuit, Layers, BarChart3, FileBarChart, Presentation, HelpCircle, Hourglass, Menu, X } from 'lucide-react';
+import { Play, Lock, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, FileText, Video, Mic, BrainCircuit, Layers, BarChart3, FileBarChart, Presentation, HelpCircle, Hourglass, Menu, X, Home } from 'lucide-react';
 import Header from '../components/Header';
 import CoursePageContent from '../components/CoursePageContent';
 import LoginModal from '../components/LoginModal';
@@ -128,14 +128,14 @@ const LessonPlayer: React.FC = () => {
     }
 
     return (
-      <div className="bg-white dark:bg-brand-black border border-gray-200 dark:border-neutral-900 p-8 rounded-lg min-h-[300px] animate-fade-in transition-colors duration-300">
-        <h3 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+      <div className="min-h-[300px] animate-fade-in">
+        <h3 className="text-xl md:text-2xl font-heading font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-3 px-2 md:px-0">
           {getTabIcon(activeTab)}
           {activeTab}
         </h3>
 
         <div
-          className="text-gray-700 dark:text-neutral-300 leading-relaxed space-y-4"
+          className="text-gray-700 dark:text-neutral-300 leading-relaxed space-y-4 px-2 md:px-0"
           dangerouslySetInnerHTML={{ __html: getDynamicContent() || '' }}
         />
       </div>
@@ -528,20 +528,56 @@ const LessonPlayer: React.FC = () => {
 
         {/* Main Content */}
         <main className="flex-1 flex flex-col overflow-hidden">
-          <div className="p-6 border-b border-gray-200 dark:border-neutral-900 flex justify-between items-center shrink-0">
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-lg bg-gray-100 dark:bg-neutral-900 hover:bg-gray-200 dark:hover:bg-neutral-800 transition-colors mr-4"
-            >
-              <Menu size={20} />
-            </button>
-            
+          {/* Mobile Header - Compact */}
+          <div className="lg:hidden p-4 border-b border-gray-200 dark:border-neutral-900 shrink-0">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsSidebarOpen(true)}
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-neutral-900 hover:bg-gray-200 dark:hover:bg-neutral-800 transition-colors"
+                  title="Menu de aulas"
+                >
+                  <Menu size={20} />
+                </button>
+                <button
+                  onClick={() => navigate('/')}
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-neutral-900 hover:bg-gray-200 dark:hover:bg-neutral-800 transition-colors"
+                  title="Voltar ao início"
+                >
+                  <Home size={20} />
+                </button>
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => prevLesson && handleLessonChange(prevLesson.id)}
+                  disabled={!prevLesson}
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-neutral-900 hover:bg-gray-200 dark:hover:bg-neutral-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  onClick={() => nextLesson && handleLessonChange(nextLesson.id)}
+                  disabled={!nextLesson}
+                  className="p-2 rounded-lg bg-gray-100 dark:bg-neutral-900 hover:bg-gray-200 dark:hover:bg-neutral-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            </div>
+            {currentLesson.courseId === 'formation' && (
+              <span className="text-xs font-mono text-gray-400 dark:text-neutral-600 mb-1 block">
+                Módulo {currentLesson.moduleId} • Aula {currentLesson.id - 100}
+              </span>
+            )}
+            <h2 className="text-lg font-heading font-bold text-gray-900 dark:text-white leading-tight">{currentLesson.title}</h2>
+          </div>
+
+          {/* Desktop Header */}
+          <div className="hidden lg:flex p-6 border-b border-gray-200 dark:border-neutral-900 justify-between items-center shrink-0">
             <div className="flex-1">
               {currentLesson.courseId === 'formation' && (
                 <span className="text-xs font-mono text-gray-400 dark:text-neutral-600 mb-1 block">
                   Módulo {currentLesson.moduleId} • Aula {currentLesson.id - 100}
-                  {/* Note: ID math is a rough display approximation, real app would use array index */}
                 </span>
               )}
               <h2 className="text-2xl font-heading font-bold text-gray-900 dark:text-white mb-2">{currentLesson.title}</h2>
@@ -566,7 +602,7 @@ const LessonPlayer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-8">
+          <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-8">
             {renderTabContent()}
           </div>
         </main>

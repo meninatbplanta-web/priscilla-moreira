@@ -17,7 +17,7 @@ export interface Module {
 }
 
 export enum TabOption {
-  COURSE = 'Curso',
+  COURSE = 'Conteúdo',
   VIDEO_SUMMARY = 'Resumo em Vídeo',
   AUDIO_SUMMARY = 'Resumo em Áudio',
   MIND_MAP = 'Mapa Mental',

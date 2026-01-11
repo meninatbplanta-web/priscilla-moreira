@@ -436,7 +436,7 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
   },
   101: {
     [TabOption.COURSE]: `
-      <div class="max-w-4xl mx-auto space-y-8 p-6 text-gray-800 dark:text-gray-200">
+      <div class="max-w-4xl mx-auto space-y-8 px-0 md:px-6 text-gray-800 dark:text-gray-200">
         <img src="https://priscilla-moreira.com/imagens/formacao/aula-0.jpg" alt="Banner Aula 0" class="w-full rounded-xl shadow-lg mb-8" />
         <h1 class="text-3xl font-bold text-center text-brand-red mb-8">O Mapa da Sua Evolução: Entenda como Funciona a Formação</h1>
         
@@ -449,7 +449,7 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
           Nós desenhamos essa estrutura para que você não seja apenas um "leitor de corpos", mas um <strong>Terapeuta de Elite</strong>, capaz de tratar traumas profundos e viver muito bem dessa profissão.
         </p>
 
-        <div class="bg-gray-50 dark:bg-neutral-900/50 p-8 rounded-xl border border-gray-100 dark:border-neutral-800 shadow-sm my-8">
+        <div class="bg-gray-50 dark:bg-neutral-900/50 p-4 md:p-8 rounded-xl border border-gray-100 dark:border-neutral-800 shadow-sm my-8">
           <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Como funciona a sua Jornada?</h2>
           <p class="mb-6">O curso é dividido em 4 Fases Sequenciais. É fundamental que você respeite essa ordem:</p>
 
@@ -541,7 +541,7 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
           </div>
         </div>
 
-        <div class="bg-red-50 dark:bg-red-900/10 p-6 rounded-lg border-l-4 border-brand-red my-8">
+        <div class="bg-red-50 dark:bg-red-900/10 p-4 md:p-6 rounded-lg border-l-4 border-brand-red my-8">
           <p class="font-bold text-brand-red text-lg mb-2">⚠️ Regra de Ouro: Não pule a Fase 1.</p>
           <p>Ela é a fundação da sua autoridade.</p>
         </div>
