@@ -5,35 +5,31 @@ import { useTheme } from '../contexts/ThemeContext';
 
 interface HeaderProps {
   showBackLink?: boolean;
+  onOpenSidebar?: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ showBackLink = true }) => {
+const Header: React.FC<HeaderProps> = ({ showBackLink = true, onOpenSidebar }) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <header className="w-full bg-white dark:bg-brand-black border-b border-gray-200 dark:border-neutral-900 py-6 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 transition-colors duration-300">
-      <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-start">
+      <div className="flex flex-col items-start md:items-center gap-2 w-full md:w-auto">
         <div className="font-heading font-bold text-xl md:text-2xl tracking-wider select-none">
-          <Link to="/"><span className="text-brand-black dark:text-white transition-colors">FORMAÇÃO</span>
-          <span className="text-brand-red ml-2">ANALISTA CORPORAL</span></Link>
+          <Link to="/">
+            <span className="text-brand-black dark:text-white transition-colors">FORMAÇÃO</span>
+            <span className="text-brand-red ml-2">ANALISTA CORPORAL</span>
+          </Link>
         </div>
-
-        {/* Mobile Toggle (visible only on small screens next to logo if needed, but flex-col centers items so maybe not needed separate.
-            Let's keep it simple: Logo | Toggle | BackLink
-            But current layout is Logo | BackLink.
-            I will add Toggle to the right side or next to back link.
-        */}
+        
+        {onOpenSidebar && (
+          <button
+            onClick={onOpenSidebar}
+            className="text-sm font-medium text-brand-red hover:text-red-600 dark:hover:text-red-400 transition-colors uppercase tracking-wide"
+          >
+            Aulas
+          </button>
+        )}
       </div>
-      
-      {showBackLink && (
-        <Link
-          to="/"
-          className="text-neutral-500 dark:text-neutral-400 hover:text-brand-red dark:hover:text-brand-red transition-colors"
-          aria-label="Voltar ao início"
-        >
-          <ArrowLeft size={20} />
-        </Link>
-      )}
     </header>
   );
 };
