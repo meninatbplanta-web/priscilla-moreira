@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Play, Lock, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, FileText, Video, Mic, BrainCircuit, Layers, BarChart3, FileBarChart, Presentation, HelpCircle, Hourglass } from 'lucide-react';
+import { Play, Lock, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, FileText, Video, Mic, BrainCircuit, Layers, BarChart3, FileBarChart, Presentation, HelpCircle, Hourglass, Menu, X } from 'lucide-react';
 import Header from '../components/Header';
 import CoursePageContent from '../components/CoursePageContent';
 import LoginModal from '../components/LoginModal';
@@ -25,6 +25,9 @@ const LessonPlayer: React.FC = () => {
   // Sidebar state: which module is expanded?
   // Initialize with the module containing the current lesson
   const [expandedModuleId, setExpandedModuleId] = useState<number | null>(null);
+  
+  // Mobile sidebar state
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const currentLessonId = Number(lessonId);
   const currentLesson = LESSONS.find(l => l.id === currentLessonId);
@@ -351,14 +354,23 @@ const LessonPlayer: React.FC = () => {
 
 
 
-      <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full overflow-hidden">
+      <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full overflow-hidden relative">
 
         {/* Sidebar */}
-        <aside className="w-full lg:w-96 border-r border-gray-200 dark:border-neutral-900 bg-white dark:bg-brand-black flex-shrink-0 flex flex-col h-full overflow-hidden transition-colors">
-          <div className="p-6 border-b border-gray-200 dark:border-neutral-900 shrink-0">
+        <aside className={`fixed lg:static inset-y-0 left-0 z-40 w-80 lg:w-96 border-r border-gray-200 dark:border-neutral-900 bg-white dark:bg-brand-black flex-shrink-0 flex flex-col overflow-hidden transition-transform duration-300 lg:translate-x-0 ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}>
+          <div className="p-6 border-b border-gray-200 dark:border-neutral-900 shrink-0 flex justify-between items-center">
             <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-gray-500 dark:text-neutral-500">
               {currentLesson.courseId === 'minicourse' ? 'Conteúdo do Minicurso' : 'Módulos da Formação'}
             </h2>
+            {/* Close button for mobile */}
+            <button
+              onClick={() => setIsSidebarOpen(false)}
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-900 transition-colors"
+            >
+              <X size={20} />
+            </button>
           </div>
 
           <div className="flex-1 overflow-y-auto custom-scrollbar">
@@ -506,10 +518,26 @@ const LessonPlayer: React.FC = () => {
           </div>
         </aside>
 
+        {/* Overlay for mobile sidebar */}
+        {isSidebarOpen && (
+          <div 
+            className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+            onClick={() => setIsSidebarOpen(false)}
+          />
+        )}
+
         {/* Main Content */}
         <main className="flex-1 flex flex-col overflow-hidden">
           <div className="p-6 border-b border-gray-200 dark:border-neutral-900 flex justify-between items-center shrink-0">
-            <div>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsSidebarOpen(true)}
+              className="lg:hidden p-2 rounded-lg bg-gray-100 dark:bg-neutral-900 hover:bg-gray-200 dark:hover:bg-neutral-800 transition-colors mr-4"
+            >
+              <Menu size={20} />
+            </button>
+            
+            <div className="flex-1">
               {currentLesson.courseId === 'formation' && (
                 <span className="text-xs font-mono text-gray-400 dark:text-neutral-600 mb-1 block">
                   Módulo {currentLesson.moduleId} • Aula {currentLesson.id - 100}
