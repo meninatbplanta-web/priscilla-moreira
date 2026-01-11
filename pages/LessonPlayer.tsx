@@ -81,7 +81,8 @@ const LessonPlayer: React.FC = () => {
     }
 
     // PAYWALL LOGIC: Intercept clicks for Formation course
-    if (targetLesson.courseId === 'formation') {
+    // Exception: Allow access to Lesson 0 (Welcome lesson, ID 101)
+    if (targetLesson.courseId === 'formation' && targetLesson.id !== 101) {
       setShowLoginModal(true);
       return;
     }
