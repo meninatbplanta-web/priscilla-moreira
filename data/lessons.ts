@@ -550,6 +550,9 @@ export const LESSON_CONTENT: Record<number, Partial<Record<TabOption, string>>> 
           Assista ao vídeo acima para entender os detalhes e, em seguida, embarque no Módulo 01.<br>
           <span class="text-brand-red block mt-2">Sua nova vida começa agora.</span>
         </p>
+        
+        <!-- Espaço adicional no final para mobile -->
+        <div class="h-24 md:h-0"></div>
       </div>
     `,
   },

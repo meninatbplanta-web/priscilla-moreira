@@ -13,9 +13,9 @@ const Header: React.FC<HeaderProps> = ({ showBackLink = true }) => {
   return (
     <header className="w-full bg-white dark:bg-brand-black border-b border-gray-200 dark:border-neutral-900 py-6 px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 transition-colors duration-300">
       <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-start">
-        <div className="font-heading font-bold text-2xl tracking-wider select-none">
-          <Link to="/"><span className="text-brand-black dark:text-white transition-colors">PRISCILLA</span>
-          <span className="text-brand-red ml-2">MOREIRA</span></Link>
+        <div className="font-heading font-bold text-xl md:text-2xl tracking-wider select-none">
+          <Link to="/"><span className="text-brand-black dark:text-white transition-colors">FORMAÇÃO</span>
+          <span className="text-brand-red ml-2">ANALISTA CORPORAL</span></Link>
         </div>
 
         {/* Mobile Toggle (visible only on small screens next to logo if needed, but flex-col centers items so maybe not needed separate.
@@ -25,25 +25,15 @@ const Header: React.FC<HeaderProps> = ({ showBackLink = true }) => {
         */}
       </div>
       
-      <div className="flex items-center gap-6">
-        <button
-          onClick={toggleTheme}
-          className="p-2 rounded-full text-neutral-500 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-colors"
-          aria-label="Alternar tema"
+      {showBackLink && (
+        <Link
+          to="/"
+          className="text-neutral-500 dark:text-neutral-400 hover:text-brand-red dark:hover:text-brand-red transition-colors"
+          aria-label="Voltar ao início"
         >
-          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-        </button>
-
-        {showBackLink && (
-          <Link
-            to="/"
-            className="text-sm font-medium text-neutral-500 dark:text-neutral-400 hover:text-brand-red dark:hover:text-brand-red transition-colors flex items-center gap-2"
-          >
-            <ArrowLeft size={16} />
-            Voltar ao início
-          </Link>
-        )}
-      </div>
+          <ArrowLeft size={20} />
+        </Link>
+      )}
     </header>
   );
 };

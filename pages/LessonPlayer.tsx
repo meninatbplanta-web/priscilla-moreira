@@ -349,12 +349,12 @@ const LessonPlayer: React.FC = () => {
 
   // --- DEFAULT FORMATION LAYOUT ---
   return (
-    <div className="h-screen bg-gray-50 dark:bg-brand-darker text-gray-900 dark:text-white flex flex-col overflow-hidden transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-brand-darker text-gray-900 dark:text-white flex flex-col transition-colors duration-300">
       <Header />
 
 
 
-      <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full overflow-hidden relative">
+      <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full relative">
 
         {/* Sidebar */}
         <aside className={`fixed lg:static inset-y-0 left-0 z-40 w-80 lg:w-96 border-r border-gray-200 dark:border-neutral-900 bg-white dark:bg-brand-black flex-shrink-0 flex flex-col overflow-hidden transition-transform duration-300 lg:translate-x-0 ${
@@ -527,7 +527,7 @@ const LessonPlayer: React.FC = () => {
         )}
 
         {/* Main Content */}
-        <main className="flex-1 flex flex-col overflow-hidden">
+        <main className="flex-1 flex flex-col">
           {/* Mobile Header - Compact */}
           <div className="lg:hidden p-4 border-b border-gray-200 dark:border-neutral-900 shrink-0">
             <div className="flex items-center justify-between mb-3">
@@ -602,7 +602,7 @@ const LessonPlayer: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-8">
+          <div className="flex-1 p-4 md:p-8">
             {renderTabContent()}
           </div>
         </main>
