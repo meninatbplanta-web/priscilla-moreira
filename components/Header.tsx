@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Sun, Moon } from 'lucide-react';
+import { ArrowLeft, Sun, Moon, BookOpen } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
 interface HeaderProps {
@@ -24,9 +24,10 @@ const Header: React.FC<HeaderProps> = ({ showBackLink = true, onOpenSidebar }) =
         {onOpenSidebar && (
           <button
             onClick={onOpenSidebar}
-            className="text-sm font-medium text-brand-red hover:text-red-600 dark:hover:text-red-400 transition-colors uppercase tracking-wide"
+            className="flex items-center gap-2 px-4 py-2 bg-brand-red hover:bg-red-600 dark:hover:bg-red-700 text-white rounded-lg transition-all duration-300 shadow-sm hover:shadow-md font-medium text-sm"
           >
-            Aulas
+            <BookOpen size={18} />
+            Acesse as Aulas
           </button>
         )}
       </div>
