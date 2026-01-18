@@ -46,10 +46,10 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ onLessonLocked }) => 
     {
       id: 'cert',
       label: 'Certificado',
-      date: '2026-01-25T00:00:00',
+      date: '2026-01-26T08:00:00',
       icon: Award,
-      path: 'EXTERNAL',
-      subtitle: 'Liberado 25/01'
+      path: '/aula/4#sec_final_cta',
+      subtitle: 'Liberado 26/01 08hs'
     },
   ];
 
@@ -64,10 +64,10 @@ const MobileBottomNav: React.FC<MobileBottomNavProps> = ({ onLessonLocked }) => 
       return;
     }
 
-    if (item.id === 'cert') {
-      window.open('https://certificado-dusky.vercel.app/', '_blank');
-    } else {
+    if (item.path.startsWith('/')) {
       navigate(item.path);
+    } else {
+      window.open(item.path, '_blank');
     }
   };
 

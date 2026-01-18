@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Play, Lock, ChevronLeft, ChevronRight, ChevronDown, ChevronUp, FileText, Video, Mic, BrainCircuit, Layers, BarChart3, FileBarChart, Presentation, HelpCircle, Hourglass, Menu, X, Home } from 'lucide-react';
 import Header from '../components/Header';
 import CoursePageContent from '../components/CoursePageContent';
@@ -25,7 +25,7 @@ const LessonPlayer: React.FC = () => {
   // Sidebar state: which module is expanded?
   // Initialize with the module containing the current lesson
   const [expandedModuleId, setExpandedModuleId] = useState<number | null>(null);
-  
+
   // Mobile sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -52,6 +52,22 @@ const LessonPlayer: React.FC = () => {
       setExpandedModuleId((prev) => prev === null ? currentLesson.moduleId : prev);
     }
   }, [currentLesson, navigate]);
+
+  // Handle Hash Scrolling
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          element.classList.add('highlight-card');
+          setTimeout(() => element.classList.remove('highlight-card'), 2000);
+        }
+      }, 1000); // 1s delay to ensure content availability
+    }
+  }, [location.hash, currentLessonId]);
 
   if (!currentLesson) return null;
 
@@ -344,9 +360,8 @@ const LessonPlayer: React.FC = () => {
       <div className="flex-1 flex flex-col lg:flex-row max-w-[1600px] mx-auto w-full relative">
 
         {/* Sidebar */}
-        <aside className={`fixed lg:static inset-y-0 left-0 z-40 w-80 lg:w-96 border-r border-gray-200 dark:border-neutral-900 bg-white dark:bg-brand-black flex-shrink-0 flex flex-col overflow-hidden transition-transform duration-300 lg:translate-x-0 ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}>
+        <aside className={`fixed lg:static inset-y-0 left-0 z-40 w-80 lg:w-96 border-r border-gray-200 dark:border-neutral-900 bg-white dark:bg-brand-black flex-shrink-0 flex flex-col overflow-hidden transition-transform duration-300 lg:translate-x-0 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}>
           <div className="p-6 border-b border-gray-200 dark:border-neutral-900 shrink-0 flex justify-between items-center">
             <h2 className="font-heading font-bold text-sm uppercase tracking-wider text-gray-500 dark:text-neutral-500">
               {currentLesson.courseId === 'minicourse' ? 'Conteúdo do Minicurso' : 'Módulos da Formação'}
@@ -507,7 +522,7 @@ const LessonPlayer: React.FC = () => {
 
         {/* Overlay for mobile sidebar */}
         {isSidebarOpen && (
-          <div 
+          <div
             className="fixed inset-0 bg-black/50 z-30 lg:hidden"
             onClick={() => setIsSidebarOpen(false)}
           />
